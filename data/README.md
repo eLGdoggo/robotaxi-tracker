@@ -55,3 +55,12 @@ Then run `python3 scripts/build_data.py`.
 - `chart_config` is rebuilt automatically. It has one entry per (metric, group). `group` is `compare` (rows at `all`, across operators) or `breakdown:<operator>` (that operator's markets). `publish` is true only when there are 2 or more series and at least one series has 2 or more points.
 - Tesla `fleet_size` at `all` before 2026 is the Austin third-party tracker count of unique vehicles seen (29, 32, 34 in Nov–Dec 2025). It counts as company-wide because Austin was Tesla's only robotaxi city then. These are vehicles seen, not vehicles active at once.
 - Rows marked `community [C]` come from X posts that quote the community Robotaxi Tracker (robotaxitracker.com by @ethanmckanna). They fill gaps only and never replace official figures. Tesla `fleet_size_supervised` is the Bay Area fleet that runs with safety drivers.
+- **Backfill on 31 Oct 2026 from tracker sources.**
+  - Tesla city geofence history comes from X posts (community [C]). These are advertised app polygons, while robotracker.app reports measured land area.
+  - Waymo city geofence history uses company-advertised areas from KTAR and TechCrunch. Later points are robotracker.app land area, so part of each step is a change of basis.
+  - Tesla `markets_count` starts at 1 on 22 Jun 2025, the Austin launch with a safety monitor in the passenger seat. Later points count fully driverless markets.
+  - Tesla has a second accident-rate point (30 Sep: 21 SGO reports over 2.0M miles). The earlier 6.77 point is now dated 18 Oct to match its 3.1M miles. Both points use the same numerator.
+  - Tesla `fleet_size_third_party_count` has history for Austin and Houston.
+  - Pony.ai fleet adds 961 (Nov 2025) and 1,159 (end of 2025).
+  - Tesla cumulative miles adds the live-counter estimate of 4.05M on 30 Oct.
+  - robotaxitracker.com's JSON API refuses automated clients, so it was not scraped.

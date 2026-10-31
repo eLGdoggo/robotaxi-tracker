@@ -5,10 +5,11 @@
    "metric": "accidents_per_million_driverless_miles",
    "group": "compare",
    "series": [
+    "Tesla",
     "Waymo"
    ],
    "max_points_per_series": 10,
-   "publish": false
+   "publish": true
   },
   {
    "metric": "accidents_per_million_driverless_miles_quarterly",
@@ -186,6 +187,7 @@
    "metric": "fleet_size",
    "group": "compare",
    "series": [
+    "Pony.ai",
     "Tesla",
     "Waymo",
     "WeRide",
@@ -222,9 +224,12 @@
   {
    "metric": "fleet_size_third_party_count",
    "group": "breakdown:Tesla",
-   "series": [],
-   "max_points_per_series": 1,
-   "publish": false
+   "series": [
+    "Austin",
+    "Houston"
+   ],
+   "max_points_per_series": 6,
+   "publish": true
   },
   {
    "metric": "geofence_area_sq_mi",
@@ -239,16 +244,26 @@
   {
    "metric": "geofence_area_sq_mi",
    "group": "breakdown:Tesla",
-   "series": [],
-   "max_points_per_series": 1,
-   "publish": false
+   "series": [
+    "Austin",
+    "Houston",
+    "Miami",
+    "Tampa"
+   ],
+   "max_points_per_series": 6,
+   "publish": true
   },
   {
    "metric": "geofence_area_sq_mi",
    "group": "breakdown:Waymo",
-   "series": [],
-   "max_points_per_series": 1,
-   "publish": false
+   "series": [
+    "Austin",
+    "Los Angeles",
+    "Phoenix",
+    "San Francisco Bay Area"
+   ],
+   "max_points_per_series": 3,
+   "publish": true
   },
   {
    "metric": "geofence_area_sq_mi_company_stated",
@@ -381,6 +396,19 @@
  "metrics": [
   {
    "date": "2026-09-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "accidents_per_million_driverless_miles",
+   "value": 10.5,
+   "unit": "crashes per M mi (cumulative)",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "NHTSA SGO Tesla ADS reports Feb-Aug 2026 (21) / Tesla Q3 2026 Update 2.0M driverless miles",
+   "source_url": "https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv",
+   "notes": "Rough: 21 SGO reports with incident dates Feb-Aug 2026 (Sep not yet in SGO file) over 2.0M driverless miles to 30 Sep. Same numerator as the 18 Oct point, so the drop between points reflects miles growth and SGO reporting lag, not a safety change."
+  },
+  {
+   "date": "2026-10-18",
    "operator": "Tesla",
    "market": "all",
    "metric": "accidents_per_million_driverless_miles",
@@ -1483,6 +1511,19 @@
    "notes": "Live counter is an estimate at current pace, not a confirmed tally."
   },
   {
+   "date": "2026-10-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "cumulative_driverless_miles",
+   "value": 4050000.0,
+   "unit": "miles",
+   "source_type": "company",
+   "confidence": "company-stated (estimate)",
+   "source_name": "Tesla Robotaxi Safety Report live counter via robotaxistats",
+   "source_url": "https://www.robotaxistats.com/services/tesla/",
+   "notes": "Live counter estimate at current fleet pace, read 30 Oct 2026 3:11 PM PT; not a confirmed total."
+  },
+  {
    "date": "2026-06-30",
    "operator": "Waymo",
    "market": "Atlanta",
@@ -2302,6 +2343,32 @@
    "notes": "Tesla Cybercab: Same-route fare / 5-mi assumed trip (route distance not reported). Original: $7.77 per ride. Vehicle: Cybercab. CNY at 6.6616/USD (ECB 29 Oct 2026) where applicable."
   },
   {
+   "date": "2025-11-23",
+   "operator": "Pony.ai",
+   "market": "all",
+   "metric": "fleet_size",
+   "value": 961.0,
+   "unit": "vehicles",
+   "source_type": "filing",
+   "confidence": "company-stated",
+   "source_name": "Pony.ai Q3 2025 results (SEC 6-K)",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1969302/000110465925115594/tm2532036d1_ex99-1.htm",
+   "notes": "961 robotaxis incl. 667 Gen-7, as of 23 Nov 2025."
+  },
+  {
+   "date": "2025-12-31",
+   "operator": "Pony.ai",
+   "market": "all",
+   "metric": "fleet_size",
+   "value": 1159.0,
+   "unit": "vehicles",
+   "source_type": "company",
+   "confidence": "company-stated",
+   "source_name": "Pony.ai release (PR Newswire)",
+   "source_url": "https://www.prnewswire.com/apac/news-releases/ponyai-expands-robotaxi-commercialization-with-atbb-advancing-asset-light-scaling-across-urban-and-airport-mobility-302671918.html",
+   "notes": "Fleet surpassed 1,159 by end-2025."
+  },
+  {
    "date": "2026-06-30",
    "operator": "Pony.ai",
    "market": "all",
@@ -2692,6 +2759,71 @@
    "notes": "Bay Area Tesla ride-hail fleet with safety driver (supervised, not driverless); unique vehicles seen per community tracker."
   },
   {
+   "date": "2025-11-27",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "fleet_size_third_party_count",
+   "value": 29.0,
+   "unit": "vehicles",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "NextBigFuture citing Robotaxi Tracker",
+   "source_url": "https://www.nextbigfuture.com/2025/11/tesla-robotaxi-tracker-shows-29-in-austin.html",
+   "notes": "Unique Austin robotaxi vehicles seen by community tracker (includes monitored cars before Jan 2026)."
+  },
+  {
+   "date": "2025-12-29",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "fleet_size_third_party_count",
+   "value": 34.0,
+   "unit": "vehicles",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Jalopnik citing Robotaxi Tracker",
+   "source_url": "https://www.jalopnik.com/2063124/tesla-austin-robotaxi-fleet-34-cars/",
+   "notes": "Unique Austin robotaxi vehicles seen by community tracker (includes monitored cars before Jan 2026)."
+  },
+  {
+   "date": "2026-01-23",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "fleet_size_third_party_count",
+   "value": 61.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @roman305 citing Robotaxi Tracker",
+   "source_url": "https://x.com/roman305/status/2014700712794456361",
+   "notes": "Unique Austin robotaxi vehicles seen by community tracker (includes monitored cars before Jan 2026)."
+  },
+  {
+   "date": "2026-03-02",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "fleet_size_third_party_count",
+   "value": 89.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @herbertong citing Robotaxi Tracker",
+   "source_url": "https://x.com/herbertong/status/2028457574320967825",
+   "notes": "Unique Austin robotaxi vehicles seen by community tracker (includes monitored cars before Jan 2026)."
+  },
+  {
+   "date": "2026-04-03",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "fleet_size_third_party_count",
+   "value": 94.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @lalo2095 citing Robotaxi Tracker",
+   "source_url": "https://x.com/lalo2095/status/2040086468107079713",
+   "notes": "Unique Austin robotaxi vehicles seen by community tracker (includes monitored cars before Jan 2026)."
+  },
+  {
    "date": "2026-10-27",
    "operator": "Tesla",
    "market": "Austin",
@@ -2731,6 +2863,19 @@
    "notes": "Miami+Orlando+Tampa combined, approx."
   },
   {
+   "date": "2026-10-26",
+   "operator": "Tesla",
+   "market": "Houston",
+   "metric": "fleet_size_third_party_count",
+   "value": 34.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @Kostiantyn14954",
+   "source_url": "https://x.com/Kostiantyn14954/status/2114787162847654244",
+   "notes": "Houston fleet ~34 cars per community tracker post."
+  },
+  {
    "date": "2026-10-27",
    "operator": "Tesla",
    "market": "Houston",
@@ -2744,6 +2889,71 @@
    "notes": "Approximate vehicles identified in unsupervised service; not Tesla-reported. Austin incl. ~230 Cybercabs."
   },
   {
+   "date": "2025-07-20",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "geofence_area_sq_mi",
+   "value": 42.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@AsenjoX: Austin geofence expanded to ~42 sq mi",
+   "source_url": "https://x.com/AsenjoX/status/1946891463020728654",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
+   "date": "2025-08-04",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "geofence_area_sq_mi",
+   "value": 80.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@statesman (Austin American-Statesman): ~80 sq mi",
+   "source_url": "https://x.com/statesman/status/1952505028293415074",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
+   "date": "2025-08-26",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "geofence_area_sq_mi",
+   "value": 171.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@evmagz: ~171 sq mi",
+   "source_url": "https://x.com/evmagz/status/1960955004807712870",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
+   "date": "2025-10-29",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "geofence_area_sq_mi",
+   "value": 243.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post: Austin 243 sq mi",
+   "source_url": "https://x.com/RebeccaRob57689/status/1983561225897468309",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
+   "date": "2026-08-31",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "geofence_area_sq_mi",
+   "value": 264.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@shipfrontierai geofence sizes",
+   "source_url": "https://x.com/shipfrontierai/status/2094461191246545022",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
    "date": "2026-10-27",
    "operator": "Tesla",
    "market": "Austin",
@@ -2755,6 +2965,110 @@
    "source_name": "robotracker.app (land area, measured from maps)",
    "source_url": "https://robotracker.app/leaderboard",
    "notes": "Third-party measurement; companies rarely publish per-city area."
+  },
+  {
+   "date": "2026-08-31",
+   "operator": "Tesla",
+   "market": "Dallas",
+   "metric": "geofence_area_sq_mi",
+   "value": 81.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@shipfrontierai geofence sizes",
+   "source_url": "https://x.com/shipfrontierai/status/2094461191246545022",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
+   "date": "2026-08-31",
+   "operator": "Tesla",
+   "market": "Houston",
+   "metric": "geofence_area_sq_mi",
+   "value": 25.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@shipfrontierai geofence sizes",
+   "source_url": "https://x.com/shipfrontierai/status/2094461191246545022",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
+   "date": "2026-10-26",
+   "operator": "Tesla",
+   "market": "Houston",
+   "metric": "geofence_area_sq_mi",
+   "value": 254.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@ethanmckanna: Houston 254 sq mi",
+   "source_url": "https://x.com/ethanmckanna/status/2114739591303287225",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
+   "date": "2026-08-31",
+   "operator": "Tesla",
+   "market": "Miami",
+   "metric": "geofence_area_sq_mi",
+   "value": 31.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@shipfrontierai geofence sizes",
+   "source_url": "https://x.com/shipfrontierai/status/2094461191246545022",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
+   "date": "2026-10-27",
+   "operator": "Tesla",
+   "market": "Miami",
+   "metric": "geofence_area_sq_mi",
+   "value": 31.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@herbertong: Miami 31, Tampa 24",
+   "source_url": "https://x.com/herbertong/status/2115106475022643381",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
+   "date": "2026-08-31",
+   "operator": "Tesla",
+   "market": "Orlando",
+   "metric": "geofence_area_sq_mi",
+   "value": 26.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@shipfrontierai geofence sizes",
+   "source_url": "https://x.com/shipfrontierai/status/2094461191246545022",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
+   "date": "2026-08-31",
+   "operator": "Tesla",
+   "market": "Tampa",
+   "metric": "geofence_area_sq_mi",
+   "value": 24.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@shipfrontierai geofence sizes",
+   "source_url": "https://x.com/shipfrontierai/status/2094461191246545022",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
+  },
+  {
+   "date": "2026-10-27",
+   "operator": "Tesla",
+   "market": "Tampa",
+   "metric": "geofence_area_sq_mi",
+   "value": 24.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "@herbertong: Miami 31, Tampa 24",
+   "source_url": "https://x.com/herbertong/status/2115106475022643381",
+   "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
   },
   {
    "date": "2026-09-04",
@@ -2796,6 +3110,19 @@
    "notes": "Third-party measurement; companies rarely publish per-city area."
   },
   {
+   "date": "2025-08-26",
+   "operator": "Waymo",
+   "market": "Austin",
+   "metric": "geofence_area_sq_mi",
+   "value": 90.0,
+   "unit": "sq mi",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @joehansen (Teslarati)",
+   "source_url": "https://x.com/joehansen/status/1960442541343740289",
+   "notes": "Waymo Austin geofence ~90 sq mi (advertised)."
+  },
+  {
    "date": "2026-10-27",
    "operator": "Waymo",
    "market": "Austin",
@@ -2833,6 +3160,19 @@
    "source_name": "robotracker.app (land area, measured from maps)",
    "source_url": "https://robotracker.app/operators/2",
    "notes": "Third-party measurement; companies rarely publish per-city area."
+  },
+  {
+   "date": "2025-06-18",
+   "operator": "Waymo",
+   "market": "Los Angeles",
+   "metric": "geofence_area_sq_mi",
+   "value": 120.0,
+   "unit": "sq mi",
+   "source_type": "press",
+   "confidence": "reported",
+   "source_name": "TechCrunch (more than 120 sq mi of LA County)",
+   "source_url": "https://techcrunch.com/2025/06/17/waymo-robotaxis-are-pushing-into-even-more-california-cities/",
+   "notes": "Company-advertised service area as reported; later robotracker.app points are measured land area, so the step partly reflects a change of basis."
   },
   {
    "date": "2026-10-27",
@@ -2887,6 +3227,32 @@
    "notes": "Third-party measurement; companies rarely publish per-city area."
   },
   {
+   "date": "2022-10-01",
+   "operator": "Waymo",
+   "market": "Phoenix",
+   "metric": "geofence_area_sq_mi",
+   "value": 50.0,
+   "unit": "sq mi",
+   "source_type": "press",
+   "confidence": "reported",
+   "source_name": "KTAR (about 50 sq mi around Chandler, Oct 2022)",
+   "source_url": "https://ktar.com/arizona-news/waymo-service-area-desert-ridge-salt-river-fields-phoenix-scottsdale-mesa-tribal-land",
+   "notes": "Company-advertised service area as reported; later robotracker.app points are measured land area, so the step partly reflects a change of basis."
+  },
+  {
+   "date": "2024-06-05",
+   "operator": "Waymo",
+   "market": "Phoenix",
+   "metric": "geofence_area_sq_mi",
+   "value": 315.0,
+   "unit": "sq mi",
+   "source_type": "press",
+   "confidence": "reported",
+   "source_name": "KTAR / Waymo (315 sq mi)",
+   "source_url": "https://ktar.com/arizona-news/waymo-service-area-desert-ridge-salt-river-fields-phoenix-scottsdale-mesa-tribal-land",
+   "notes": "Company-advertised service area as reported; later robotracker.app points are measured land area, so the step partly reflects a change of basis."
+  },
+  {
    "date": "2026-10-27",
    "operator": "Waymo",
    "market": "Phoenix",
@@ -2924,6 +3290,19 @@
    "source_name": "robotracker.app (land area, measured from maps)",
    "source_url": "https://robotracker.app/operators/2",
    "notes": "Third-party measurement; companies rarely publish per-city area."
+  },
+  {
+   "date": "2024-08-06",
+   "operator": "Waymo",
+   "market": "San Francisco Bay Area",
+   "metric": "geofence_area_sq_mi",
+   "value": 55.0,
+   "unit": "sq mi",
+   "source_type": "press",
+   "confidence": "reported",
+   "source_name": "TechCrunch (about 55 sq mi)",
+   "source_url": "https://techcrunch.com/2024/08/06/waymo-expands-robotaxi-coverage-in-los-angeles-and-san-francisco/",
+   "notes": "Company-advertised service area as reported; later robotracker.app points are measured land area, so the step partly reflects a change of basis."
   },
   {
    "date": "2026-10-27",
@@ -3509,6 +3888,19 @@
    "source_name": "Baidu Q2 2026 6-K",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1329099/000119312526355431/d112854dex991.htm",
    "notes": "\"Global footprint\" incl. testing/pilots - not all public driverless paid. Not comparable with US counts."
+  },
+  {
+   "date": "2025-06-22",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "markets_count",
+   "value": 1.0,
+   "unit": "markets",
+   "source_type": "press",
+   "confidence": "reported",
+   "source_name": "CNBC (Austin launch)",
+   "source_url": "https://www.cnbc.com/2025/06/23/tesla-robotaxi-incidents-caught-on-camera-in-austin-get-nhtsa-concern.html",
+   "notes": "Austin paid robotaxi launch, safety monitor in passenger seat (no driver). Basis change: later points count fully driverless markets (Austin driverless from 22 Jan 2026)."
   },
   {
    "date": "2026-01-22",
