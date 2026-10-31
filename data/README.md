@@ -46,3 +46,10 @@ Extra keys: fleet_size_third_party_count (sightings-based estimates, not company
 4. robotracker.app/leaderboard: the embedded chart JSON gives area history (save to raw/rt_leaderboard.html).
 5. Company quarterly results (Alphabet, Baidu, Pony, WeRide).
 Then run `python3 scripts/build_data.py`.
+
+## Consolidated headline series, margins and chart_config (added 31 Oct 2026)
+- `fare_per_mile_usd` at market `all` is one value per operator per quarter, dated at the quarter end (or the build date for the current quarter), marked derived [E]. Tesla uses the Austin Model Y rows, averaged within the quarter. When there is no Austin row it uses the simple average of driverless cities (only Q2 2026, Dallas). The supervised Bay Area service is excluded. Waymo and Zoox use a simple average of their city rows. Baidu uses the Wuhan before-subsidy fare. These are list or quoted fares. City and variant rows stay as they are for the breakdown charts.
+- `fare_per_mile_realised_usd` is Waymo's realised revenue per mile ($4.75). It used to be stored at fare_per_mile_usd/all.
+- `fleet_size` Tesla/all is the sum of the same-date third-party city counts (27 Oct 2026). It is an estimate.
+- `margin_per_mile_usd` is the quarterly fare at `all` minus the latest cost_per_mile_usd estimate on or before the quarter end. A cost estimate is carried forward for no more than 12 months. This is a ROUGH ESTIMATE. `_low_`/`_high_` use the highest and lowest cost estimates from the prior 12 months. For Waymo these include the Deutsche Bank $1.36–1.43 range and the Morgan Stanley all-in $1.98. Baidu is skipped because there is no cost estimate.
+- `chart_config` is rebuilt automatically. It has one entry per (metric, group). `group` is `compare` (rows at `all`, across operators) or `breakdown:<operator>` (that operator's markets). `publish` is true only when there are 2 or more series and at least one series has 2 or more points.

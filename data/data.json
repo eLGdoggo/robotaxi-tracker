@@ -1,5 +1,373 @@
 {
  "generated_at": "2026-10-31",
+ "chart_config": [
+  {
+   "metric": "accidents_per_million_driverless_miles",
+   "group": "compare",
+   "series": [
+    "Waymo"
+   ],
+   "max_points_per_series": 10,
+   "publish": false
+  },
+  {
+   "metric": "accidents_per_million_driverless_miles_quarterly",
+   "group": "compare",
+   "series": [
+    "Waymo"
+   ],
+   "max_points_per_series": 7,
+   "publish": false
+  },
+  {
+   "metric": "cost_per_mile_allin_usd",
+   "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "cost_per_mile_next_gen_usd",
+   "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "cost_per_mile_target_usd",
+   "group": "compare",
+   "series": [
+    "Tesla"
+   ],
+   "max_points_per_series": 2,
+   "publish": false
+  },
+  {
+   "metric": "cost_per_mile_usd",
+   "group": "compare",
+   "series": [
+    "Tesla",
+    "Waymo"
+   ],
+   "max_points_per_series": 2,
+   "publish": true
+  },
+  {
+   "metric": "crash_reports_count",
+   "group": "compare",
+   "series": [
+    "Tesla",
+    "Waymo",
+    "Zoox"
+   ],
+   "max_points_per_series": 21,
+   "publish": true
+  },
+  {
+   "metric": "cumulative_driverless_miles",
+   "group": "compare",
+   "series": [
+    "Baidu Apollo Go",
+    "Tesla",
+    "Waymo"
+   ],
+   "max_points_per_series": 12,
+   "publish": true
+  },
+  {
+   "metric": "cumulative_driverless_miles",
+   "group": "breakdown:Tesla",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "cumulative_driverless_miles",
+   "group": "breakdown:Waymo",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "cumulative_rides",
+   "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "fare_per_mile_realised_usd",
+   "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "fare_per_mile_usd",
+   "group": "compare",
+   "series": [
+    "Baidu Apollo Go",
+    "Tesla",
+    "Waymo"
+   ],
+   "max_points_per_series": 6,
+   "publish": true
+  },
+  {
+   "metric": "fare_per_mile_usd",
+   "group": "breakdown:Baidu Apollo Go",
+   "series": [
+    "Wuhan"
+   ],
+   "max_points_per_series": 4,
+   "publish": false
+  },
+  {
+   "metric": "fare_per_mile_usd",
+   "group": "breakdown:Human ride-hail (Lyft)",
+   "series": [
+    "Las Vegas"
+   ],
+   "max_points_per_series": 2,
+   "publish": false
+  },
+  {
+   "metric": "fare_per_mile_usd",
+   "group": "breakdown:Human ride-hail (Uber)",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "fare_per_mile_usd",
+   "group": "breakdown:Tesla",
+   "series": [
+    "Austin",
+    "San Francisco Bay Area"
+   ],
+   "max_points_per_series": 7,
+   "publish": true
+  },
+  {
+   "metric": "fare_per_mile_usd",
+   "group": "breakdown:Waymo",
+   "series": [
+    "San Francisco Bay Area"
+   ],
+   "max_points_per_series": 2,
+   "publish": false
+  },
+  {
+   "metric": "fare_per_mile_usd",
+   "group": "breakdown:Zoox",
+   "series": [
+    "Las Vegas"
+   ],
+   "max_points_per_series": 2,
+   "publish": false
+  },
+  {
+   "metric": "fare_per_mile_usd_after_subsidy",
+   "group": "breakdown:Baidu Apollo Go",
+   "series": [
+    "Wuhan"
+   ],
+   "max_points_per_series": 3,
+   "publish": false
+  },
+  {
+   "metric": "fare_per_mile_usd_cybercab",
+   "group": "breakdown:Tesla",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "fleet_size",
+   "group": "compare",
+   "series": [
+    "Waymo",
+    "WeRide",
+    "Zoox"
+   ],
+   "max_points_per_series": 5,
+   "publish": true
+  },
+  {
+   "metric": "fleet_size",
+   "group": "breakdown:Tesla",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "fleet_size_registrations",
+   "group": "breakdown:Tesla",
+   "series": [
+    "Texas"
+   ],
+   "max_points_per_series": 7,
+   "publish": false
+  },
+  {
+   "metric": "fleet_size_third_party_count",
+   "group": "breakdown:Tesla",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "geofence_area_sq_mi",
+   "group": "compare",
+   "series": [
+    "Tesla",
+    "Waymo"
+   ],
+   "max_points_per_series": 26,
+   "publish": true
+  },
+  {
+   "metric": "geofence_area_sq_mi",
+   "group": "breakdown:Tesla",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "geofence_area_sq_mi",
+   "group": "breakdown:Waymo",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "geofence_area_sq_mi_company_stated",
+   "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "injury_crashes_count",
+   "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "injury_crashes_per_million_miles",
+   "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "injury_crashes_per_million_miles_human_benchmark",
+   "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "margin_per_mile_high_usd",
+   "group": "compare",
+   "series": [
+    "Tesla",
+    "Waymo"
+   ],
+   "max_points_per_series": 2,
+   "publish": true
+  },
+  {
+   "metric": "margin_per_mile_low_usd",
+   "group": "compare",
+   "series": [
+    "Tesla",
+    "Waymo"
+   ],
+   "max_points_per_series": 2,
+   "publish": true
+  },
+  {
+   "metric": "margin_per_mile_usd",
+   "group": "compare",
+   "series": [
+    "Tesla",
+    "Waymo"
+   ],
+   "max_points_per_series": 2,
+   "publish": true
+  },
+  {
+   "metric": "markets_count",
+   "group": "compare",
+   "series": [
+    "Tesla",
+    "Waymo"
+   ],
+   "max_points_per_series": 11,
+   "publish": true
+  },
+  {
+   "metric": "other_bets_operating_income_usd",
+   "group": "compare",
+   "series": [
+    "Waymo"
+   ],
+   "max_points_per_series": 3,
+   "publish": false
+  },
+  {
+   "metric": "other_bets_revenue_usd",
+   "group": "compare",
+   "series": [
+    "Waymo"
+   ],
+   "max_points_per_series": 3,
+   "publish": false
+  },
+  {
+   "metric": "paid_rides_per_week",
+   "group": "compare",
+   "series": [
+    "Waymo"
+   ],
+   "max_points_per_series": 4,
+   "publish": false
+  },
+  {
+   "metric": "paid_rides_per_week_avg_derived",
+   "group": "compare",
+   "series": [
+    "Baidu Apollo Go"
+   ],
+   "max_points_per_series": 9,
+   "publish": false
+  },
+  {
+   "metric": "paid_rides_per_week_peak",
+   "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "rides_per_quarter",
+   "group": "compare",
+   "series": [
+    "Baidu Apollo Go"
+   ],
+   "max_points_per_series": 9,
+   "publish": false
+  },
+  {
+   "metric": "robotaxi_revenue_usd",
+   "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  }
+ ],
  "metrics": [
   {
    "date": "2026-09-30",
@@ -1352,6 +1720,19 @@
    "notes": "Lower bound."
   },
   {
+   "date": "2026-10-29",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "fare_per_mile_realised_usd",
+   "value": 4.75,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst derivation (Other Bets rev, rides/wk, 3.9 mi CPUC trip length)",
+   "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm",
+   "notes": "Realised revenue per paid mile; midpoint of $4.4-5.1 range from three methods."
+  },
+  {
    "date": "2024-02-29",
    "operator": "Baidu Apollo Go",
    "market": "Wuhan",
@@ -1402,6 +1783,58 @@
    "source_name": "OFweek (measured fares)",
    "source_url": "https://www.ofweek.com/ai/2026-05/ART-201712-8110-30688184.html",
    "notes": "Before subsidy: CNY4.6-6.7/km original price (midpoint 5.65) x1.609344 / 6.6616 CNY/US$ (ECB 29 Oct 2026). Range $1.11-1.62/mi."
+  },
+  {
+   "date": "2024-03-31",
+   "operator": "Baidu Apollo Go",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 1.17,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://wh.bendibao.com/news/2024229/176753.shtm",
+   "notes": "Quarterly headline [E]: simple average of city rows in quarter (Wuhan 2024-02-29 $1.17). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
+  },
+  {
+   "date": "2024-06-30",
+   "operator": "Baidu Apollo Go",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 1.19,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://img2.zhitongcaijing.com/content/detail/1153564.html",
+   "notes": "Quarterly headline [E]: simple average of city rows in quarter (Wuhan 2024-06-30 $1.19). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
+  },
+  {
+   "date": "2025-06-30",
+   "operator": "Baidu Apollo Go",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 1.17,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://www.koreatimes.co.kr/business/companies/20250521/trying-chinas-robotaxi-in-wuhan",
+   "notes": "Quarterly headline [E]: simple average of city rows in quarter (Wuhan 2025-05-21 $1.17). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
+  },
+  {
+   "date": "2026-06-30",
+   "operator": "Baidu Apollo Go",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 1.36,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://www.ofweek.com/ai/2026-05/ART-201712-8110-30688184.html",
+   "notes": "Quarterly headline [E]: simple average of city rows in quarter (Wuhan 2026-05-15 $1.36). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
   },
   {
    "date": "2026-08-10",
@@ -1586,6 +2019,84 @@
    "notes": "Tesla Robotaxi (supervised): Obi Jan $/mi x 1.34 (Obi: Tesla per-mile price +34%). Original: $8.31-$14.59 daily avg per ride. SUPERVISED service (safety driver). CNY at 6.6616/USD (ECB 29 Oct 2026) where applicable."
   },
   {
+   "date": "2025-06-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 0.84,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://robotaxiprice.com/dataset/downloads/observations.csv",
+   "notes": "Quarterly headline [E]: Austin Model Y (main fleet) rows only, averaged in quarter (Austin 2025-06-22 $0.84). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
+  },
+  {
+   "date": "2025-09-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 1.32,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://robotaxiprice.com/dataset/downloads/observations.csv",
+   "notes": "Quarterly headline [E]: Austin Model Y (main fleet) rows only, averaged in quarter (Austin 2025-07-14 $1.38; Austin 2025-07-31 $1.25). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
+  },
+  {
+   "date": "2025-12-31",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 1.2,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://www.basenor.com/blogs/news/tesla-robotaxi-pricing-changes-in-austin-what-youll-pay-now",
+   "notes": "Quarterly headline [E]: Austin Model Y (main fleet) rows only, averaged in quarter (Austin 2025-10-15 $1.2). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
+  },
+  {
+   "date": "2026-03-31",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 1.82,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://www.notateslaapp.com/news/3779/tesla-raises-robotaxi-price-again-with-40-increase",
+   "notes": "Quarterly headline [E]: Austin Model Y (main fleet) rows only, averaged in quarter (Austin 2026-03-07 $1.65; Austin 2026-03-12 $2.0). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
+  },
+  {
+   "date": "2026-06-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 2.73,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://robotaxiprice.com/tesla-robotaxi-price/",
+   "notes": "Quarterly headline [E]: simple average of city rows in quarter (Dallas 2026-04-15 $2.73). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
+  },
+  {
+   "date": "2026-09-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 2.42,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://robotaxiprice.com/tesla-robotaxi-price/",
+   "notes": "Quarterly headline [E]: Austin Model Y (main fleet) rows only, averaged in quarter (Austin 2026-09-05 $2.42). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
+  },
+  {
    "date": "2026-04-15",
    "operator": "Waymo",
    "market": "Dallas",
@@ -1638,17 +2149,43 @@
    "notes": "Waymo: Obi Jan $/mi x 1.04 (Obi: Waymo per-mile price +4%). Original: nan. CNY at 6.6616/USD (ECB 29 Oct 2026) where applicable."
   },
   {
-   "date": "2026-10-29",
+   "date": "2026-03-31",
    "operator": "Waymo",
    "market": "all",
    "metric": "fare_per_mile_usd",
-   "value": 4.75,
+   "value": 9.2,
    "unit": "USD/mi",
    "source_type": "derived",
    "confidence": "derived [E]",
-   "source_name": "Fin Analyst derivation (Other Bets rev, rides/wk, 3.9 mi CPUC trip length)",
-   "source_url": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm",
-   "notes": "Realised revenue per paid mile; midpoint of $4.4-5.1 range from three methods."
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://rideobi.com/tesla/",
+   "notes": "Quarterly headline [E]: simple average of city rows in quarter (San Francisco Bay Area 2026-01-01 $9.2). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
+  },
+  {
+   "date": "2026-06-30",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 7.88,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://rideobi.com/teslaq1/",
+   "notes": "Quarterly headline [E]: simple average of city rows in quarter (Dallas 2026-04-15 $6.19; San Francisco Bay Area 2026-04-14 $9.57). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
+  },
+  {
+   "date": "2026-10-31",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 6.53,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://www.robotaxiatlas.com/waymo-price/",
+   "notes": "Quarterly headline [E]: simple average of city rows in quarter (Las Vegas 2026-10-13 $6.53). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy. Q4 2026 to date."
   },
   {
    "date": "2026-08-10",
@@ -1675,6 +2212,19 @@
    "source_name": "casinos",
    "source_url": "https://www.casinos.com/us/news/zoox-robotaxis-begin-paid-ride-service-across-las-vegas-strip",
    "notes": "Zoox: Quote / 3.20-mi OSRM route distance. Original: $21.07 per ride. CNY at 6.6616/USD (ECB 29 Oct 2026) where applicable."
+  },
+  {
+   "date": "2026-09-30",
+   "operator": "Zoox",
+   "market": "all",
+   "metric": "fare_per_mile_usd",
+   "value": 8.1,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Consolidated from city rows in metrics.csv",
+   "source_url": "https://www.casinos.com/us/news/zoox-robotaxis-begin-paid-ride-service-across-las-vegas-strip",
+   "notes": "Quarterly headline [E]: simple average of city rows in quarter (Las Vegas 2026-08-10 $9.62; Las Vegas 2026-08-15 $6.58). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy."
   },
   {
    "date": "2026-08-15",
@@ -1766,6 +2316,19 @@
    "source_name": "Teslarati (300+ Cybercabs in Austin service)",
    "source_url": "https://www.teslarati.com/tesla-cybercab-dallas/",
    "notes": "Approximate where source says ~ or more than. Cybercabs only."
+  },
+  {
+   "date": "2026-10-27",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fleet_size",
+   "value": 616.0,
+   "unit": "vehicles",
+   "source_type": "third-party",
+   "confidence": "derived [E]",
+   "source_name": "Sum of third-party city counts (Robonomics citing third-party trackers (sightings))",
+   "source_url": "https://robonomics.substack.com/p/fact-check-on-self-driving-3q26",
+   "notes": "Sum of Austin 460, Dallas 77, Houston 39, Florida 40 (driverless cities, sightings basis, same date). Tesla publishes no fleet count; excludes ~760 supervised Bay Area cars."
   },
   {
    "date": "2025-05-05",
@@ -2624,6 +3187,162 @@
    "source_name": "Waymo Safety Impact hub",
    "source_url": "https://waymo.com/safety/impact/",
    "notes": "Human benchmark same areas, 32% underreporting adjustment."
+  },
+  {
+   "date": "2026-06-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "margin_per_mile_high_usd",
+   "value": 2.13,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare minus lowest cost estimate",
+   "source_url": "https://www.thehepfund.com/post/robotaxis",
+   "notes": "ROUGH ESTIMATE [E]: $2.73 minus lowest cost estimate in prior 12 months ($0.6)."
+  },
+  {
+   "date": "2026-09-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "margin_per_mile_high_usd",
+   "value": 1.82,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare minus lowest cost estimate",
+   "source_url": "https://www.thehepfund.com/post/robotaxis",
+   "notes": "ROUGH ESTIMATE [E]: $2.42 minus lowest cost estimate in prior 12 months ($0.6)."
+  },
+  {
+   "date": "2026-06-30",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "margin_per_mile_high_usd",
+   "value": 6.45,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare minus lowest cost estimate",
+   "source_url": "https://finance.yahoo.com/markets/stocks/articles/tesla-stock-investors-just-got-083200689.html",
+   "notes": "ROUGH ESTIMATE [E]: $7.88 minus lowest cost estimate in prior 12 months ($1.43)."
+  },
+  {
+   "date": "2026-10-31",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "margin_per_mile_high_usd",
+   "value": 5.17,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare minus lowest cost estimate",
+   "source_url": "https://www.aioapex.com/en/blog/robotaxi-expansion-is-accelerating-in-2026-but-the-per-mile-math-still-does-not--mvkkozbi",
+   "notes": "ROUGH ESTIMATE [E]: $6.53 minus lowest cost estimate in prior 12 months ($1.36)."
+  },
+  {
+   "date": "2026-06-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "margin_per_mile_low_usd",
+   "value": 1.92,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare minus highest cost estimate",
+   "source_url": "https://www.thehepfund.com/post/robotaxis",
+   "notes": "ROUGH ESTIMATE [E]: $2.73 minus highest cost estimate in prior 12 months ($0.81)."
+  },
+  {
+   "date": "2026-09-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "margin_per_mile_low_usd",
+   "value": 1.61,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare minus highest cost estimate",
+   "source_url": "https://www.thehepfund.com/post/robotaxis",
+   "notes": "ROUGH ESTIMATE [E]: $2.42 minus highest cost estimate in prior 12 months ($0.81)."
+  },
+  {
+   "date": "2026-06-30",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "margin_per_mile_low_usd",
+   "value": 6.45,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare minus highest cost estimate",
+   "source_url": "https://finance.yahoo.com/markets/stocks/articles/tesla-stock-investors-just-got-083200689.html",
+   "notes": "ROUGH ESTIMATE [E]: $7.88 minus highest cost estimate in prior 12 months ($1.43)."
+  },
+  {
+   "date": "2026-10-31",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "margin_per_mile_low_usd",
+   "value": 4.55,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare minus highest cost estimate",
+   "source_url": "https://www.aioapex.com/en/blog/robotaxi-expansion-is-accelerating-in-2026-but-the-per-mile-math-still-does-not--mvkkozbi",
+   "notes": "ROUGH ESTIMATE [E]: $6.53 minus highest cost estimate in prior 12 months ($1.98; MS all-in incl. overhead)."
+  },
+  {
+   "date": "2026-06-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "margin_per_mile_usd",
+   "value": 2.13,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare_per_mile_usd minus cost_per_mile_usd",
+   "source_url": "https://www.thehepfund.com/post/robotaxis",
+   "notes": "ROUGH ESTIMATE [E]: consolidated list fare $2.73/mi minus analyst cost $0.6/mi (ARK (as reported by HEP Fund), 2026-06-30; carried forward up to 12 months). Excludes overhead, R&D, deadheading and promos unless the cost source includes them; fare is list/quoted, not realised."
+  },
+  {
+   "date": "2026-09-30",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "margin_per_mile_usd",
+   "value": 1.82,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare_per_mile_usd minus cost_per_mile_usd",
+   "source_url": "https://www.thehepfund.com/post/robotaxis",
+   "notes": "ROUGH ESTIMATE [E]: consolidated list fare $2.42/mi minus analyst cost $0.6/mi (ARK (as reported by HEP Fund), 2026-06-30; carried forward up to 12 months). Excludes overhead, R&D, deadheading and promos unless the cost source includes them; fare is list/quoted, not realised."
+  },
+  {
+   "date": "2026-06-30",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "margin_per_mile_usd",
+   "value": 6.45,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare_per_mile_usd minus cost_per_mile_usd",
+   "source_url": "https://finance.yahoo.com/markets/stocks/articles/tesla-stock-investors-just-got-083200689.html",
+   "notes": "ROUGH ESTIMATE [E]: consolidated list fare $7.88/mi minus analyst cost $1.43/mi (Morgan Stanley (Percoco) - current Jaguar fleet, 2026-04-30; carried forward up to 12 months). Excludes overhead, R&D, deadheading and promos unless the cost source includes them; fare is list/quoted, not realised."
+  },
+  {
+   "date": "2026-10-31",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "margin_per_mile_usd",
+   "value": 5.14,
+   "unit": "USD/mi",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Fin Analyst: fare_per_mile_usd minus cost_per_mile_usd",
+   "source_url": "https://www.aioapex.com/en/blog/robotaxi-expansion-is-accelerating-in-2026-but-the-per-mile-math-still-does-not--mvkkozbi",
+   "notes": "ROUGH ESTIMATE [E]: consolidated list fare $6.53/mi minus analyst cost $1.395/mi (Deutsche Bank via AIO APEX - 5th gen, 2026-10-23; carried forward up to 12 months). Excludes overhead, R&D, deadheading and promos unless the cost source includes them; fare is list/quoted, not realised."
   },
   {
    "date": "2026-08-18",
