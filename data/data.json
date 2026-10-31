@@ -191,7 +191,7 @@
     "WeRide",
     "Zoox"
    ],
-   "max_points_per_series": 5,
+   "max_points_per_series": 7,
    "publish": true
   },
   {
@@ -208,6 +208,15 @@
     "Texas"
    ],
    "max_points_per_series": 7,
+   "publish": false
+  },
+  {
+   "metric": "fleet_size_supervised",
+   "group": "breakdown:Tesla",
+   "series": [
+    "San Francisco Bay Area"
+   ],
+   "max_points_per_series": 5,
    "publish": false
   },
   {
@@ -2358,6 +2367,45 @@
    "notes": "Unique Model Ys seen in the Austin robotaxi network per third-party tracker. Austin-only, counted as company-wide because Austin was then Tesla's only robotaxi city (Bay Area supervised service excluded). Vehicles ever seen, not concurrently active (~1-5 at a time per Electrek). Launch Jun 2025 was reported as 10-20 cars (CNBC), a range so not plotted."
   },
   {
+   "date": "2026-01-23",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fleet_size",
+   "value": 61.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @roman305 citing Robotaxi Tracker",
+   "source_url": "https://x.com/roman305/status/2014700712794456361",
+   "notes": "Austin tracker count (61); counted as company-wide because Austin was Tesla's only robotaxi city until Dallas/Houston on 2026-04-18. Bay Area supervised fleet excluded. Unique vehicles seen, not concurrently active."
+  },
+  {
+   "date": "2026-03-02",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fleet_size",
+   "value": 89.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @herbertong citing Robotaxi Tracker",
+   "source_url": "https://x.com/herbertong/status/2028457574320967825",
+   "notes": "Austin tracker count (89); counted as company-wide because Austin was Tesla's only robotaxi city until Dallas/Houston on 2026-04-18. Bay Area supervised fleet excluded. Unique vehicles seen, not concurrently active."
+  },
+  {
+   "date": "2026-04-03",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fleet_size",
+   "value": 94.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @lalo2095 citing Robotaxi Tracker",
+   "source_url": "https://x.com/lalo2095/status/2040086468107079713",
+   "notes": "Austin tracker count (94); counted as company-wide because Austin was Tesla's only robotaxi city until Dallas/Houston on 2026-04-18. Bay Area supervised fleet excluded. Unique vehicles seen, not concurrently active."
+  },
+  {
    "date": "2026-10-27",
    "operator": "Tesla",
    "market": "all",
@@ -2577,6 +2625,71 @@
    "source_name": "Texas DMV automated motor vehicle registry (via robotaxistats/robotscount)",
    "source_url": "https://txmccs.txdmv.gov/",
    "notes": "Registered, not necessarily in service; statewide Texas (Model Y + Cybercab). Tesla publishes no fleet count."
+  },
+  {
+   "date": "2025-11-25",
+   "operator": "Tesla",
+   "market": "San Francisco Bay Area",
+   "metric": "fleet_size_supervised",
+   "value": 88.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @cztslinvinkor citing Robotaxi Tracker",
+   "source_url": "https://x.com/cztslinvinkor/status/1993275746647969969",
+   "notes": "Bay Area Tesla ride-hail fleet with safety driver (supervised, not driverless); unique vehicles seen per community tracker."
+  },
+  {
+   "date": "2025-12-02",
+   "operator": "Tesla",
+   "market": "San Francisco Bay Area",
+   "metric": "fleet_size_supervised",
+   "value": 108.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @cztslinvinkor citing Robotaxi Tracker",
+   "source_url": "https://x.com/cztslinvinkor/status/1995888869083152667",
+   "notes": "Bay Area Tesla ride-hail fleet with safety driver (supervised, not driverless); unique vehicles seen per community tracker."
+  },
+  {
+   "date": "2026-01-23",
+   "operator": "Tesla",
+   "market": "San Francisco Bay Area",
+   "metric": "fleet_size_supervised",
+   "value": 164.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @roman305 citing Robotaxi Tracker",
+   "source_url": "https://x.com/roman305/status/2014700712794456361",
+   "notes": "Bay Area Tesla ride-hail fleet with safety driver (supervised, not driverless); unique vehicles seen per community tracker."
+  },
+  {
+   "date": "2026-03-02",
+   "operator": "Tesla",
+   "market": "San Francisco Bay Area",
+   "metric": "fleet_size_supervised",
+   "value": 341.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @herbertong citing Robotaxi Tracker",
+   "source_url": "https://x.com/herbertong/status/2028457574320967825",
+   "notes": "Bay Area Tesla ride-hail fleet with safety driver (supervised, not driverless); unique vehicles seen per community tracker."
+  },
+  {
+   "date": "2026-04-03",
+   "operator": "Tesla",
+   "market": "San Francisco Bay Area",
+   "metric": "fleet_size_supervised",
+   "value": 449.0,
+   "unit": "vehicles",
+   "source_type": "community",
+   "confidence": "community [C]",
+   "source_name": "X post @lalo2095 citing Robotaxi Tracker",
+   "source_url": "https://x.com/lalo2095/status/2040086468107079713",
+   "notes": "Bay Area Tesla ride-hail fleet with safety driver (supervised, not driverless); unique vehicles seen per community tracker."
   },
   {
    "date": "2026-10-27",
