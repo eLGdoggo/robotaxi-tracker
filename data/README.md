@@ -1,0 +1,48 @@
+# Robotaxi tracker dataset (built 31 Oct 2026, Sydney time, AEDT)
+
+Files: `metrics.csv` (tidy long format), `markets.csv`, `data.json` (`{generated_at, metrics, markets}`, with null or blank fields omitted and values numeric), `raw/` (source downloads). The build script is `../scripts/build_data.py`, and re-running it regenerates all three files.
+
+Operators: Waymo, Tesla, Zoox, Pony.ai, Baidu Apollo Go, WeRide, plus "Human ride-hail" as a benchmark. Market `all` means a company-wide value; any other market value is a city, and Tesla also has a `Texas` row for fleet registrations.
+
+confidence values: `reported` (regulator or media), `company-stated`, `analyst estimate`, `derived [E]`. Nothing is interpolated, so gaps are simply missing rows.
+
+## Chart metrics
+| key | definition |
+|---|---|
+| accidents_per_million_driverless_miles | Waymo: cumulative NHTSA-reportable in-transport crashes with no driver aboard (any severity, any fault, from the Waymo hub CSV2), divided by hub rider-only miles. Tesla: SGO ADS reports Feb–Sep 2026 divided by 3.1M unsupervised miles. Both are derived. |
+| crash_reports_count | Raw NHTSA SGO ADS reports per quarter (by incident month, latest report version). Includes testing with safety drivers, and for Tesla includes the period with a safety monitor in the car. Q3 2026 is incomplete. |
+| cumulative_driverless_miles | Miles with no human driver. For Tesla, only the unsupervised miles since 22 Jan 2026 (no employee in the car). FSD Supervised, Bay Area safety-driver miles and the period with a passenger-seat monitor are excluded. Baidu is converted from km. |
+| markets_count | Metros with public driverless rides. Step series built from the launch dates in markets.csv. Baidu's 28 is a "global footprint" figure that includes testing. |
+| geofence_area_sq_mi | robotracker.app land area only (consistent third-party series; excludes waitlist/rollout cities). |
+| geofence_area_sq_mi_company_stated | Company statements (Waymo "over 1,400 sq mi across 11 cities", 13 May 2026). |
+| cost_per_mile_usd | Analyst vehicle/operating cost per mile (e.g. Deutsche Bank $1.36–1.43 for the 5th-gen car, stored as the midpoint; Morgan Stanley $1.43 Waymo, $0.81 Tesla). |
+| cost_per_mile_allin_usd | All-in cost per mile including overhead (Morgan Stanley 2025 Waymo ~$1.98, via AIO APEX, unverified). |
+| fare_per_mile_usd | Price per mile charged to riders. [E] rows divide a per-ride fare by an assumed or route distance. CNY is converted at 6.6616 per US$ (ECB, 29 Oct 2026). Ranges are stored as midpoints. Tesla rows are Model Y (main fleet) unless noted; for Apollo Go, this key is the before-subsidy list fare. |
+| fare_per_mile_usd_cybercab | Tesla Cybercab fares (Austin, Sep 2026, same route as a Model Y fare). |
+| fare_per_mile_usd_after_subsidy | Fare paid after subsidy or promotion: Wuhan $0.27 (CSC's assumed CNY1.1/km, 2024) and Beijing Yizhuang $0.08 (launch fare of ~CNY2 for 5.9 km, verified on iEV China; the source prints $0.30, which is per ride). |
+| fleet_size | Vehicles in service or operated, as stated by the company or media (e.g. Tesla Austin 300+ Cybercabs). |
+| fleet_size_registrations | Tesla, market `Texas`: Texas DMV automated-vehicle registrations. **Registrations are NOT vehicles in service.** Tesla publishes no fleet count. |
+| paid_rides_per_week | Company-stated weekly paid rides (Waymo, lower bounds). |
+| paid_rides_per_week_peak | Company-stated PEAK week (Baidu ~350k, Mar 2026). Baidu counts "fully driverless operational rides", not necessarily paid. |
+| paid_rides_per_week_avg_derived | [E] quarterly rides ÷ 13 (Baidu). This is an average, not comparable with the peak; Q2 2026 (~77k) reflects regulatory pauses. |
+
+Human ride-hail benchmark operators: `Human ride-hail` (MS cost), `Human ride-hail (Uber)`, `Human ride-hail (Lyft)`.
+
+The build asserts that no two rows share operator+market+metric+date.
+
+Extra keys: fleet_size_third_party_count (sightings-based estimates, not company figures), accidents_per_million_driverless_miles_quarterly, injury_crashes_per_million_miles, injury_crashes_per_million_miles_human_benchmark, injury_crashes_count, cost_per_mile_target_usd, cost_per_mile_next_gen_usd, cumulative_rides, rides_per_quarter, other_bets_revenue_usd, other_bets_operating_income_usd, robotaxi_revenue_usd.
+
+## Caveats
+- The Tesla and Waymo crash rates are not like-for-like. Tesla's sample is small (21 reports), and Tesla publishes no per-month miles.
+- Waymo's pre-2024 rider-only miles have only one point (7.1M through Oct 2023), so the crash-rate series starts in Jun 2024.
+- Waymo hasn't published a fleet count since May 2025; later counts come from media and NHTSA recall populations. Tesla publishes no fleet count or per-city area.
+- Only Waymo has a geofence history before 2025. robotracker counts only Austin for Tesla.
+- Cost per mile is analyst-only, often from secondary sources (for example Morgan Stanley's $1.98, which couldn't be verified).
+
+## Refresh
+1. NHTSA SGO CSVs: static.nhtsa.gov/odi/ffdd/sgo-2021-01/ (current file + Archive-2021-2025/), updated monthly.
+2. Waymo hub CSV1/CSV2 (links on waymo.com/safety/impact), updated quarterly. Add the new cumulative miles to `wm` in the script.
+3. Tesla Robotaxi Safety Report, via robotaxistats.com/services/tesla.
+4. robotracker.app/leaderboard: the embedded chart JSON gives area history (save to raw/rt_leaderboard.html).
+5. Company quarterly results (Alphabet, Baidu, Pony, WeRide).
+Then run `python3 scripts/build_data.py`.
