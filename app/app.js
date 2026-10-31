@@ -2,7 +2,7 @@
 const COLORS={waymo:'#1e88ff',tesla:'#e53935',zoox:'#ab47bc','pony.ai':'#26c6a6','baidu apollo go':'#ffb300',weride:'#8bc34a'};
 const EXTRA=['#ff7043','#5c6bc0','#ec407a','#9ccc65','#00acc1','#bdbdbd'];
 const METRIC_ORDER=['accidents_per_million_driverless_miles','accidents_per_million_driverless_miles_quarterly','crash_reports_count','injury_crashes_per_million_miles','injury_crashes_count','cumulative_driverless_miles','markets_count','geofence_area_sq_mi','cost_per_mile_usd','cost_per_mile_target_usd','cost_per_mile_next_gen_usd','fare_per_mile_usd','fleet_size','paid_rides_per_week','rides_per_quarter','cumulative_rides'];
-const TITLES={accidents_per_million_driverless_miles:'Accidents per million driverless miles',cumulative_driverless_miles:'Cumulative fully driverless miles',markets_count:'Number of markets',geofence_area_sq_mi:'Geofence area',cost_per_mile_usd:'Cost per mile (USD)',fare_per_mile_usd:'Fare per mile (USD)',fleet_size:'Fleet size per city / jurisdiction',paid_rides_per_week:'Paid rides per week',
+const TITLES={accidents_per_million_driverless_miles:'Accidents per million driverless miles',cumulative_driverless_miles:'Cumulative fully driverless miles',markets_count:'Number of markets',geofence_area_sq_mi:'Geofence area',cost_per_mile_usd:'Cost per mile (USD)',fare_per_mile_usd:'Fare per mile (USD)',fleet_size:'Fleet size',paid_rides_per_week:'Paid rides per week',margin_per_mile_usd:'Margin per mile (fare minus cost), rough estimate',
   accidents_per_million_driverless_miles_quarterly:'Crashes per million driverless miles (per quarter)',crash_reports_count:'NHTSA crash reports (count per quarter)',
   injury_crashes_per_million_miles:'Injury crashes per million miles',injury_crashes_count:'Injury crashes (count)',cost_per_mile_target_usd:'Target cost per mile (USD)',
   cost_per_mile_next_gen_usd:'Next-gen vehicle cost per mile (USD)',cumulative_rides:'Cumulative rides',rides_per_quarter:'Rides per quarter',
@@ -16,6 +16,8 @@ const bIdx=o=>benchIdx[o]??(benchIdx[o]=Object.keys(benchIdx).length);
 const VARIANTS={cost_per_mile_allin_usd:{base:'cost_per_mile_usd',label:'all-in'},geofence_area_sq_mi_company_stated:{base:'geofence_area_sq_mi',label:'company-stated'},
   fare_per_mile_usd_cybercab:{base:'fare_per_mile_usd',label:'Cybercab'},fare_per_mile_usd_after_subsidy:{base:'fare_per_mile_usd',label:'after subsidy'},
   paid_rides_per_week_peak:{base:'paid_rides_per_week',label:'peak'},paid_rides_per_week_avg_derived:{base:'paid_rides_per_week',label:'avg, derived'},
+  fleet_size_third_party_count:{base:'fleet_size',label:'third-party count',name:(op,mk)=>`${op} ${mk} (third-party count)`},
+  margin_per_mile_low_usd:{base:'margin_per_mile_usd',label:'low',band:true},margin_per_mile_high_usd:{base:'margin_per_mile_usd',label:'high',band:true},
   fleet_size_registrations:{base:'fleet_size',label:'registrations',name:(op,mk)=>`${op} ${mk} registrations`}};
 const AGG=new Set(['','all','total','global','overall','aggregate','company','worldwide','*']);
 const SQMI_TO_KM2=2.58999;
@@ -48,7 +50,7 @@ function loadData(raw){
     const opsObj=raw.operators&&!Array.isArray(raw.operators)?raw.operators:null;
     if(!rows.length&&opsObj){for(const op in opsObj)for(const m in opsObj[op])for(const p of [].concat(opsObj[op][m]))rows.push({operator:op,metric:m,...toRows([p])[0]})}
     markets=toRows(raw.markets||raw.markets_info||raw.market_list||[]);
-    meta={updated:raw.generated_at||raw.updated||raw.updated_at||raw.as_of||raw.last_updated||(raw.meta&&(raw.meta.generated_at||raw.meta.updated)),notes:raw.notes||(raw.meta&&raw.meta.notes),sample:raw.is_sample||raw.sample};
+    meta={chartConfig:raw.chart_config&&typeof raw.chart_config==='object'?raw.chart_config:null,updated:raw.generated_at||raw.updated||raw.updated_at||raw.as_of||raw.last_updated||(raw.meta&&(raw.meta.generated_at||raw.meta.updated)),notes:raw.notes||(raw.meta&&raw.meta.notes),sample:raw.is_sample||raw.sample};
   }
   rows=rows.map(r=>({date:r.date||r.as_of||r.period,operator:String(r.operator||r.company||'').trim(),market:String(r.market??r.city??r.jurisdiction??'').trim(),
     metric:normMetric(r.metric||r.measure),value:r.value===''||r.value==null?null:Number(String(r.value).replace(/,/g,'')),unit:r.unit||'',
@@ -73,7 +75,7 @@ function fmt(v,m){if(m==='geofence_area_sq_mi'&&km())v*=SQMI_TO_KM2;const a=Math
   return a<10&&v%1?v.toFixed(2).replace(/0$/,''):Math.round(v*10)/10+''}
 const money=m=>/_usd$/.test(m)?'$':'';
 const unitOf=m=>m==='geofence_area_sq_mi'?(km()?'km²':'sq mi'):'';
-const title=m=>TITLES[m]||m.replace(/_/g,' ').replace(/^./,c=>c.toUpperCase());
+const title=m=>TITLES[m]||(VARIANTS[m]?title(VARIANTS[m].base)+', '+VARIANTS[m].label:null)||m.replace(/_/g,' ').replace(/^./,c=>c.toUpperCase());
 
 async function fetchFirst(){
   const q=new URLSearchParams(location.search).get('data');
@@ -89,66 +91,128 @@ async function init(){
   const ops=[...new Set(DATA.rows.map(r=>r.operator).filter(o=>!isBench(o)))].sort((a,b)=>rank(a)-rank(b)||a.localeCompare(b));
   $('#ops').innerHTML=ops.map(o=>`<button class="chip on" style="--c:${color(o)}" data-op="${esc(o)}">${esc(o)}</button>`).join('');
   $('#ops').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;const o=b.dataset.op;hidden.has(o)?hidden.delete(o):hidden.add(o);b.classList.toggle('on');render()};
-  $('#km').onchange=render;$('#cities').onchange=render;render();
+  $('#km').onchange=render;render();
 }
 const rank=o=>/waymo/i.test(o)?0:/tesla/i.test(o)?1:2;
 function vis(){return DATA.rows.filter(r=>!hidden.has(r.operator))}
-function render(){renderSummary();renderCharts();renderFleet()}
+
+// ---------- layout ----------
+const isA=r=>AGG.has(r.market.toLowerCase());
+const MARGIN='margin_per_mile_usd';
+function hexToHsl(h){let r=parseInt(h.slice(1,3),16)/255,g=parseInt(h.slice(3,5),16)/255,b=parseInt(h.slice(5,7),16)/255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let H=0,S=0,L=(mx+mn)/2;
+  if(mx!==mn){const d=mx-mn;S=L>.5?d/(2-mx-mn):d/(mx+mn);H=mx===r?(g-b)/d+(g<b?6:0):mx===g?(b-r)/d+2:(r-g)/d+4;H*=60}return[H,S*100,L*100]}
+function shade(hex,i,n){if(n<=1||i===0)return hex;const[h,s,l]=hexToHsl(hex);const L=[l,l+18,l-14,l+30,l-24,l+9,l-7][i%7];return`hsl(${h.toFixed(0)},${s.toFixed(0)}%,${Math.max(22,Math.min(85,L)).toFixed(0)}%)`}
+
+// Decide charts.
+// chart_config (preferred): LIST of {metric, group:'compare'|'breakdown:<operator>', series:[operators|markets], max_points_per_series, publish}
+// (a map {metric:{group,publish,series}} is also accepted). One chart per published entry. Without config: computed rule.
+const HIDE_UNLESS_CONFIG=new Set(['fare_per_mile_realised_usd']);
+function cfgList(){const c=DATA.meta.chartConfig;if(!c)return null;
+  if(Array.isArray(c))return c.filter(e=>e&&e.metric);
+  return Object.entries(c).flatMap(([k,v])=>[].concat(v).map(e=>({metric:k,...e})))}
+function plan(rows){
+  const cfg=cfgList();
+  const ops=[...new Set(rows.map(r=>r.operator).filter(o=>!isBench(o)))].sort((a,b)=>rank(a)-rank(b)||a.localeCompare(b));
+  const compare=[],detail={};let margin=[];
+  const benchFor=(k,mk)=>rows.filter(r=>r.metric===k&&isBench(r.operator)&&mk.has(r.market));
+  const addDetail=(o,k,or)=>{if(or.length<2)return;const mk=new Set(or.map(r=>r.market));(detail[o]=detail[o]||[]).push({key:k,rows:or.concat(benchFor(k,mk))})};
+  const covered=new Set();
+  if(cfg){
+    for(const e of cfg){covered.add(e.metric);if(e.publish===false||!e.publish&&e.publish!==undefined)continue;
+      const g=String(e.group||'compare'),ser=Array.isArray(e.series)?new Set(e.series):null;
+      if(/^margin_per_mile_(low|high)_usd$/.test(e.metric))continue;
+      if(e.metric===MARGIN){margin=rows.filter(r=>r.chart===MARGIN&&isA(r)&&(!ser||ser.has(r.operator)));continue}
+      if(g==='compare'){const cr=rows.filter(r=>r.metric===e.metric&&isA(r)&&(!ser||ser.has(r.operator)||isBench(r.operator)));if(cr.length>1)compare.push({key:e.metric,rows:cr})}
+      else if(g.startsWith('breakdown:')){const o=g.slice(10);addDetail(o,e.metric,rows.filter(r=>r.metric===e.metric&&r.operator===o&&(!ser||ser.has(r.market)||(isA(r)&&ser.has('all')))))}
+    }
+  }
+  // fallback for metrics not covered by config (or no config at all)
+  const charts=[...new Set(rows.filter(r=>!covered.has(r.metric)&&!(VARIANTS[r.metric]&&covered.has(VARIANTS[r.metric].base))&&!(cfg===null?false:false)).map(r=>r.chart))]
+    .filter(k=>!HIDE_UNLESS_CONFIG.has(k)).sort((a,b)=>mi(a)-mi(b)||a.localeCompare(b));
+  for(const k of charts){
+    if(k===MARGIN){margin=rows.filter(r=>r.chart===MARGIN&&isA(r));continue}
+    const cr=rows.filter(r=>r.metric===k&&isA(r)),co=cr.filter(r=>!isBench(r.operator));
+    const isCmp=new Set(co.map(r=>r.operator)).size>=2&&co.length>1;
+    if(isCmp)compare.push({key:k,rows:cr});
+    for(const o of ops){const or=rows.filter(r=>r.chart===k&&r.operator===o&&!covered.has(r.metric));
+      if(or.some(r=>!isA(r)||r.variant)||!isCmp)addDetail(o,k,or)}
+  }
+  compare.sort((a,b)=>mi(a.key)-mi(b.key));
+  for(const o in detail)detail[o].sort((a,b)=>mi(a.key)-mi(b.key)||a.key.localeCompare(b.key));
+  const dOps=ops.concat(Object.keys(detail).filter(o=>!ops.includes(o)));
+  return{compare,detail,ops:dOps,margin:margin.filter(r=>r.metric===MARGIN).length>1?margin:[]};
+}
+
+function render(){
+  charts.forEach(c=>c.destroy());charts=[];
+  const P=plan(vis());
+  renderSummary();
+  const m=$('#margin');m.innerHTML='';if(P.margin.length)drawChart(m,MARGIN,P.margin,'margin');
+  const c=$('#compare');c.innerHTML='';P.compare.forEach(x=>drawChart(c,x.key,x.rows,'compare'));
+  if(!P.compare.length)c.innerHTML='<p class="muted">Not enough company-wide data to compare.</p>';
+  const d=$('#detail');d.innerHTML='';
+  for(const o of P.ops){if(!P.detail[o])continue;const sec=document.createElement('div');
+    sec.innerHTML=`<h3 class="coh" style="--c:${color(o)}">${esc(o)}</h3><div class="grid"></div>`;d.appendChild(sec);
+    P.detail[o].forEach(x=>drawChart(sec.querySelector('.grid'),x.key,x.rows,'detail',o))}
+  renderFleet();
+}
 
 function renderSummary(){
-  const rows=vis(),by={};
-  const isA=r=>AGG.has(r.market.toLowerCase()),better=(a,b)=>!b||(isA(a)&&!isA(b))||(isA(a)===isA(b)&&a.date>b.date);
-  for(const r of rows){if(!KEY_METRICS.has(r.metric)||isBench(r.operator))continue;
-    if(r.metric==='fleet_size'&&!isA(r))continue;const k=r.operator+'|'+r.metric;if(better(r,by[k]))by[k]=r}
-  // non-aggregate metrics (e.g. fare) still prefer aggregate; city-only metrics fall back to latest city row
-  for(const r of rows){if(!KEY_METRICS.has(r.metric)||isBench(r.operator)||r.metric==='fleet_size')continue}
-  // fleet with no company-wide row: show the largest latest jurisdiction (not a sum: jurisdictions can overlap, e.g. Texas ⊃ Austin)
-  const fl={};rows.filter(r=>r.metric==='fleet_size'&&!isA(r)&&!isBench(r.operator)).forEach(r=>{const k=r.operator+'|'+r.market;if(!fl[k]||r.date>fl[k].date)fl[k]=r});
-  Object.values(fl).forEach(r=>{const k=r.operator+'|fleet_size';if(!by[k]||(!isA(by[k])&&r.value>by[k].value))by[k]=r});
-  const ops=[...new Set(rows.map(r=>r.operator).filter(o=>!isBench(o)))].sort((a,b)=>rank(a)-rank(b)||a.localeCompare(b));
+  const by={};
+  for(const r of vis()){if(!KEY_METRICS.has(r.metric)||isBench(r.operator)||!isA(r))continue;const k=r.operator+'|'+r.metric;if(!by[k]||r.date>by[k].date)by[k]=r}
+  const ops=[...new Set(vis().map(r=>r.operator).filter(o=>!isBench(o)))].sort((a,b)=>rank(a)-rank(b)||a.localeCompare(b));
   $('#summary').innerHTML=ops.map(o=>{
     const items=Object.values(by).filter(r=>r.operator===o).sort((a,b)=>mi(a.metric)-mi(b.metric));
-    let h=items.map(r=>`<div><span>${esc(SHORT[r.metric]||title(r.metric))}${isA(r)?'':' <span class="muted">('+esc(r.market)+')</span>'}</span><b title="${esc(r.source_name)}">${money(r.metric)}${fmt(r.value,r.metric)} ${unitOf(r.metric)} <span class="conf">${esc(r.confidence||r.source_type)}</span><br><span class="muted">${esc(r.date)}</span></b></div>`).join('');
-    return `<div class="card" style="--c:${color(o)}"><h3>${esc(o)}</h3>${h||'<span class="muted">no data</span>'}</div>`}).join('');
+    const h=items.map(r=>`<div><span>${esc(SHORT[r.metric]||title(r.metric))}</span><b title="${esc(r.source_name)}">${money(r.metric)}${fmt(r.value,r.metric)} ${unitOf(r.metric)} <span class="conf">${esc(r.confidence||r.source_type)}</span><br><span class="muted">${esc(r.date)}</span></b></div>`).join('');
+    return `<div class="card" style="--c:${color(o)}"><h3>${esc(o)}</h3>${h||'<span class="muted">no company-wide data</span>'}</div>`}).join('');
 }
 const mi=m=>{const i=METRIC_ORDER.indexOf(m);return i<0?99:i};
 
-function renderCharts(){
-  charts.forEach(c=>c.destroy());charts=[];
-  const showCities=$('#cities').checked,rows=vis(),metrics=[...new Set(DATA.rows.map(r=>r.chart))].sort((a,b)=>mi(a)-mi(b)||a.localeCompare(b));
-  const el=$('#charts');el.innerHTML='';
-  for(const m of metrics){
-    const all=rows.filter(r=>r.chart===m);
-    const hasAgg=new Set(all.filter(r=>AGG.has(r.market.toLowerCase())).map(r=>r.operator+'|'+r.metric));
-    const mr=all.filter(r=>showCities||AGG.has(r.market.toLowerCase())||!hasAgg.has(r.operator+'|'+r.metric));
-    const groups={};
-    for(const r of mr){const agg=AGG.has(r.market.toLowerCase());const V=VARIANTS[r.metric];let k=agg?r.operator:r.operator+' · '+r.market;if(V)k=V.name?V.name(r.operator,r.market):k+' ('+V.label+')';(groups[k]=groups[k]||{op:r.operator,agg,variant:!!V,pts:[]}).pts.push(r)}
-    const base0=all.find(r=>!r.variant)||all[0];const unitTxt=unitOf(m)||(base0&&base0.unit&&!/^usd/i.test(base0.unit)?base0.unit:'');
-    const box=document.createElement('div');box.className='box';
-    box.innerHTML=`<h4>${esc(title(m))}${unitTxt&&!/usd/i.test(title(m))?' <span class="muted">('+esc(unitTxt)+')</span>':''}</h4><div class="cw"><canvas></canvas></div>`;el.appendChild(box);
-    if(!mr.length){box.querySelector('.cw').innerHTML='<p class="muted">No data for selected operators</p>';continue}
-    const sc=v=>m==='geofence_area_sq_mi'&&km()?v*SQMI_TO_KM2:v;
-    const dates=mr.map(r=>Date.parse(r.date)),dmin=Math.min(...dates),dmax=Math.max(...dates);
-    const pad=Math.max(45*864e5,(dmax-dmin)*0.05),xmin=dmin-pad,xmax=dmax+pad;
-    const ds=[];let i=0;
-    for(const [k,g] of Object.entries(groups)){g.pts.sort((a,b)=>a.date<b.date?-1:1);const b=isBench(g.op),col=color(g.op);
-      ds.push({label:b?k+' (benchmark)':k,data:g.pts.map(r=>({x:Date.parse(r.date),y:sc(r.value),r})),borderColor:col,backgroundColor:col,
-        showLine:g.pts.length>1,borderDash:b?BENCH_DASH[bIdx(g.op)%4]:g.variant?[5,4]:g.agg?[]:[[],[6,3],[2,3],[10,4]][i++%4],
-        pointRadius:g.pts.length===1?6:4,pointHoverRadius:8,pointBorderColor:'#0b0f17',pointBorderWidth:1,borderWidth:2,spanGaps:false,tension:0,order:b?2:1,segment:{borderColor:ctx=>ctx.p0.parsed.x===ctx.p1.parsed.x?'transparent':undefined},
-        pointStyle:p=>{const c=(p.raw?p.raw.r.confidence+' '+p.raw.r.source_type:'').toLowerCase();return /estimate|\[e\]/.test(c)&&!/derived/.test(c)?'triangle':/derived/.test(c)?'rectRot':'circle'}});
-      if(b){const last=g.pts[g.pts.length-1];// reference line at benchmark's latest value, clearly labelled
-        ds.push({label:'_ref',data:[{x:xmin,y:sc(last.value)},{x:xmax,y:sc(last.value)}],borderColor:col,borderDash:BENCH_DASH[bIdx(g.op)%4],borderWidth:1.5,pointRadius:0,pointHoverRadius:0,order:3,isRef:true})}}
-    const isLog=m==='cumulative_driverless_miles'&&mr.every(r=>r.value>0);
-    const c=new Chart(box.querySelector('canvas'),{type:'line',data:{datasets:ds},options:{responsive:true,maintainAspectRatio:false,animation:false,
-      interaction:{mode:'nearest',intersect:true},
-      scales:{x:{type:'time',min:xmin,max:xmax,ticks:{color:'#7d8a9c',maxRotation:0,autoSkip:true,maxTicksLimit:7},grid:{color:'#1e2636'}},
-        y:{type:isLog?'logarithmic':'linear',beginAtZero:!isLog,ticks:{color:'#7d8a9c',maxTicksLimit:7,callback:v=>money(m)+fmt(v)},grid:{color:'#1e2636'}}},
-      plugins:{legend:{labels:{color:'#c9d1dc',boxWidth:12,font:{size:11},filter:l=>l.text!=='_ref'}},
-        tooltip:{filter:it=>!it.dataset.isRef&&it.raw&&it.raw.r,callbacks:{title:it=>it[0].raw.r.date,label:it=>`${it.dataset.label}: ${money(m)}${fmt(it.raw.r.value,m)} ${unitOf(m)||it.raw.r.unit}`,
-          afterLabel:it=>{const r=it.raw.r;return[`Source: ${r.source_name||'—'}`,`Type: ${r.source_type||'—'} · Confidence: ${r.confidence||'—'}`,r.notes?`Note: ${r.notes.length>160?r.notes.slice(0,160)+'…':r.notes}`:'',r.source_url?'(tap again to open source)':''].filter(Boolean)}}}},
-      onClick:(e,els)=>{els=els.filter(x=>!c.data.datasets[x.datasetIndex].isRef);if(!els.length)return;const r=c.data.datasets[els[0].datasetIndex].data[els[0].index].r;if(r.source_url&&c._lastTip===r)window.open(r.source_url,'_blank');c._lastTip=r}}});
-    charts.push(c);
-  }
+function drawChart(el,m,rows,mode,op){
+  const groups={};
+  for(const r of rows){const V=VARIANTS[r.metric],b=isBench(r.operator);
+    let k;if(mode==='compare'||(mode==='margin'&&!V))k=r.operator;
+    else if(V&&V.band)k=r.operator+'|band'+V.label;
+    else{k=isA(r)?r.operator:r.operator+' · '+r.market;if(V)k=V.name?V.name(r.operator,r.market):k+' ('+V.label+')'}
+    (groups[k]=groups[k]||{op:r.operator,market:r.market,agg:isA(r),variant:V,bench:b,pts:[]}).pts.push(r)}
+  const base0=rows.find(r=>!r.variant)||rows[0];const unitTxt=unitOf(m)||(base0&&base0.unit&&!/^usd/i.test(base0.unit)?base0.unit:'');
+  const box=document.createElement('div');box.className='box'+(mode==='margin'?' wide':'');
+  const sub=mode==='margin'?'<div class="muted">Rough estimate: list fares minus analyst cost estimates; Waymo&#39;s realised revenue (~$4.75/mi) implies a lower margin. Shaded band = low–high cost-estimate range.</div>':'';
+  box.innerHTML=`<h4>${esc(title(m))}${unitTxt&&!/usd/i.test(title(m))?' <span class="muted">('+esc(unitTxt)+')</span>':''}</h4>${sub}<div class="cw"><canvas></canvas></div>`;el.appendChild(box);
+  const sc=v=>m==='geofence_area_sq_mi'&&km()?v*SQMI_TO_KM2:v;
+  const dates=rows.map(r=>Date.parse(r.date)),dmin=Math.min(...dates),dmax=Math.max(...dates);
+  const pad=Math.max(45*864e5,(dmax-dmin)*0.05),xmin=dmin-pad,xmax=dmax+pad;
+  // city shade index per operator
+  const cityIdx={};Object.values(groups).filter(g=>!g.bench&&g.agg).forEach(g=>{cityIdx[g.op]=cityIdx[g.op]||[g.market]});Object.values(groups).filter(g=>!g.bench&&!g.variant).forEach(g=>{const l=cityIdx[g.op]=cityIdx[g.op]||[];if(!l.includes(g.market))l.push(g.market)});
+  Object.values(groups).filter(g=>!g.bench).forEach(g=>{const l=cityIdx[g.op]=cityIdx[g.op]||[];if(!l.includes(g.market))l.push(g.market)});
+  const ds=[];
+  const entries=Object.entries(groups).sort((a,b)=>(a[1].bench-b[1].bench)||(!!a[1].variant-!!b[1].variant)||(b[1].agg-a[1].agg));
+  for(const [k,g] of entries){g.pts.sort((a,b)=>a.date<b.date?-1:1);const b=g.bench;
+    const l=cityIdx[g.op]||[g.market];const col=b?color(g.op):shade(color(g.op),l.indexOf(g.market),l.length);
+    const data=g.pts.map(r=>({x:Date.parse(r.date),y:sc(r.value),r}));
+    if(g.variant&&g.variant.band){const hi=g.variant.label==='high';
+      ds.push({label:hi?'_bandhi_'+g.op:'_bandlo_'+g.op,data,borderColor:'transparent',backgroundColor:color(g.op)+'33',pointRadius:0,pointHoverRadius:4,showLine:true,fill:hi?'-1':false,order:5,band:true,spanGaps:false});continue}
+    ds.push({label:b?k+' (benchmark)':k,data,borderColor:col,backgroundColor:col,
+      showLine:g.pts.length>1,borderDash:b?BENCH_DASH[bIdx(g.op)%4]:g.variant?[5,4]:[],
+      pointRadius:g.pts.length===1?6:4,pointHoverRadius:8,pointBorderColor:'#0b0f17',pointBorderWidth:1,borderWidth:g.agg&&!g.variant?2.5:2,spanGaps:false,tension:0,order:b?2:1,
+      segment:{borderColor:ctx=>ctx.p0.parsed.x===ctx.p1.parsed.x?'transparent':undefined},
+      pointStyle:p=>{const c=(p.raw?p.raw.r.confidence+' '+p.raw.r.source_type:'').toLowerCase();return /estimate|\[e\]/.test(c)&&!/derived/.test(c)?'triangle':/derived/.test(c)?'rectRot':'circle'}});
+    if(b){const last=g.pts[g.pts.length-1];
+      ds.push({label:'_ref',data:[{x:xmin,y:sc(last.value)},{x:xmax,y:sc(last.value)}],borderColor:col,borderDash:BENCH_DASH[bIdx(g.op)%4],borderWidth:1.5,pointRadius:0,pointHoverRadius:0,order:3,isRef:true})}}
+  // band datasets must be adjacent lo then hi for fill:'-1'
+  {const bands=ds.filter(d=>d.band).sort((a,b)=>{const oa=a.label.slice(9),ob=b.label.slice(9);return oa<ob?-1:oa>ob?1:(a.label.includes('lo')?-1:1)});const rest=ds.filter(d=>!d.band);ds.length=0;ds.push(...rest,...bands)}
+  const isLog=m==='cumulative_driverless_miles'&&rows.every(r=>r.value>0)&&Math.max(...rows.map(r=>r.value))/Math.min(...rows.map(r=>r.value))>50;
+  const c=new Chart(box.querySelector('canvas'),{type:'line',data:{datasets:ds},options:{responsive:true,maintainAspectRatio:false,animation:false,
+    interaction:{mode:'nearest',intersect:true},
+    scales:{x:{type:'time',min:xmin,max:xmax,ticks:{color:'#7d8a9c',maxRotation:0,autoSkip:true,maxTicksLimit:7},grid:{color:'#1e2636'}},
+      y:{type:isLog?'logarithmic':'linear',beginAtZero:!isLog,ticks:{color:'#7d8a9c',maxTicksLimit:7,callback:v=>money(m)+fmt(v)},
+        grid:{color:ctx=>ctx.tick&&ctx.tick.value===0&&mode==='margin'?'#c9d1dc':'#1e2636',lineWidth:ctx=>ctx.tick&&ctx.tick.value===0&&mode==='margin'?1.5:1}}},
+    plugins:{legend:{labels:{color:'#c9d1dc',boxWidth:12,font:{size:11},filter:l=>!/^_/.test(l.text)}},
+      tooltip:{filter:it=>!it.dataset.isRef&&it.raw&&it.raw.r,callbacks:{title:it=>it[0].raw.r.date,
+        label:it=>`${it.dataset.band?it.raw.r.operator+' '+VARIANTS[it.raw.r.metric].label:it.dataset.label}: ${money(m)}${fmt(it.raw.r.value,m)} ${unitOf(m)||it.raw.r.unit}`,
+        afterLabel:it=>{const r=it.raw.r;return[`Source: ${r.source_name||'—'}`,`Type: ${r.source_type||'—'} · Confidence: ${r.confidence||'—'}`,r.notes?`Note: ${r.notes.length>160?r.notes.slice(0,160)+'…':r.notes}`:'',r.source_url?'(tap again to open source)':''].filter(Boolean)}}}},
+    onClick:(e,els)=>{els=els.filter(x=>!c.data.datasets[x.datasetIndex].isRef);if(!els.length)return;const r=c.data.datasets[els[0].datasetIndex].data[els[0].index].r;if(r&&r.source_url&&c._lastTip===r)window.open(r.source_url,'_blank');c._lastTip=r}}});
+  charts.push(c);
 }
 
 function renderFleet(){
@@ -156,6 +220,6 @@ function renderFleet(){
   const mk={};(DATA.markets||[]).forEach(x=>{mk[(x.operator||'')+'|'+(x.market||x.city||'')]=x});
   const list=Object.values(latest).sort((a,b)=>rank(a.operator)-rank(b.operator)||a.operator.localeCompare(b.operator)||b.value-a.value);
   $('#fleet').innerHTML='<tr><th>Operator</th><th>City / market</th><th>Fleet</th><th>Date</th><th>Confidence</th><th>Source</th></tr>'+(list.length?list.map(r=>{const x=mk[r.operator+'|'+r.market]||{};
-    return`<tr><td style="color:${color(r.operator)}">${esc(r.operator)}</td><td>${AGG.has(r.market.toLowerCase())?'All markets':esc(r.market)}${x.status?` <span class="muted">${esc(x.status)}</span>`:''}</td><td>${fmt(r.value)}</td><td>${esc(r.date)}</td><td><span class="conf">${esc(r.confidence||r.source_type)}</span></td><td>${r.source_url?`<a href="${esc(r.source_url)}" target="_blank" rel="noopener">${esc(r.source_name||'link')}</a>`:esc(r.source_name)}</td></tr>`}).join(''):'<tr><td colspan="6" class="muted">No per-city fleet data</td></tr>');
+    return`<tr><td style="color:${color(r.operator)}">${esc(r.operator)}</td><td>${isA(r)?'All markets':esc(r.market)}${x.status?` <span class="muted">${esc(x.status)}</span>`:''}</td><td>${fmt(r.value)}</td><td>${esc(r.date)}</td><td><span class="conf">${esc(r.confidence||r.source_type)}</span></td><td>${r.source_url?`<a href="${esc(r.source_url)}" target="_blank" rel="noopener">${esc(r.source_name||'link')}</a>`:esc(r.source_name)}</td></tr>`}).join(''):'<tr><td colspan="6" class="muted">No fleet data</td></tr>');
 }
 init();

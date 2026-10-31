@@ -10,3 +10,4 @@ h1{margin:4px 0;font-size:22px}h2{font-size:16px;margin:18px 0 8px;color:#9fb3c8
 .box{background:#141a26;border-radius:10px;padding:10px;height:340px;display:flex;flex-direction:column}.box h4{margin:0 0 6px;font-size:14px}.box .cw{flex:1;position:relative}
 .tablewrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{padding:6px 8px;border-bottom:1px solid #1e2636;text-align:left}th{color:#9fb3c8}
 a{color:#7cc4ff}.conf{font-size:11px;padding:1px 6px;border-radius:8px;background:#253047}
+.coh{border-left:5px solid var(--c);padding-left:8px;margin:18px 0 8px;font-size:16px}.grid1 .box{height:320px;margin-top:14px}.box .muted{margin-bottom:4px}
