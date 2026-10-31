@@ -186,6 +186,7 @@
    "metric": "fleet_size",
    "group": "compare",
    "series": [
+    "Tesla",
     "Waymo",
     "WeRide",
     "Zoox"
@@ -2316,6 +2317,45 @@
    "source_name": "Teslarati (300+ Cybercabs in Austin service)",
    "source_url": "https://www.teslarati.com/tesla-cybercab-dallas/",
    "notes": "Approximate where source says ~ or more than. Cybercabs only."
+  },
+  {
+   "date": "2025-11-27",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fleet_size",
+   "value": 29.0,
+   "unit": "vehicles",
+   "source_type": "third-party",
+   "confidence": "derived [E]",
+   "source_name": "NextBigFuture citing Robotaxi Tracker",
+   "source_url": "https://www.nextbigfuture.com/2025/11/tesla-robotaxi-tracker-shows-29-in-austin.html",
+   "notes": "Unique Model Ys seen in the Austin robotaxi network per third-party tracker. Austin-only, counted as company-wide because Austin was then Tesla's only robotaxi city (Bay Area supervised service excluded). Vehicles ever seen, not concurrently active (~1-5 at a time per Electrek). Launch Jun 2025 was reported as 10-20 cars (CNBC), a range so not plotted."
+  },
+  {
+   "date": "2025-12-22",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fleet_size",
+   "value": 32.0,
+   "unit": "vehicles",
+   "source_type": "third-party",
+   "confidence": "derived [E]",
+   "source_name": "Electrek citing Robotaxi Tracker (E. McKenna)",
+   "source_url": "https://electrek.co/2025/12/22/tesla-robotaxi-project-austin-much-smaller-than-musk-claims/",
+   "notes": "Unique Model Ys seen in the Austin robotaxi network per third-party tracker. Austin-only, counted as company-wide because Austin was then Tesla's only robotaxi city (Bay Area supervised service excluded). Vehicles ever seen, not concurrently active (~1-5 at a time per Electrek). Launch Jun 2025 was reported as 10-20 cars (CNBC), a range so not plotted."
+  },
+  {
+   "date": "2025-12-29",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "fleet_size",
+   "value": 34.0,
+   "unit": "vehicles",
+   "source_type": "third-party",
+   "confidence": "derived [E]",
+   "source_name": "Jalopnik citing Robotaxi Tracker",
+   "source_url": "https://www.jalopnik.com/2063124/tesla-austin-robotaxi-fleet-34-cars/",
+   "notes": "Unique Model Ys seen in the Austin robotaxi network per third-party tracker. Austin-only, counted as company-wide because Austin was then Tesla's only robotaxi city (Bay Area supervised service excluded). Vehicles ever seen, not concurrently active (~1-5 at a time per Electrek). Launch Jun 2025 was reported as 10-20 cars (CNBC), a range so not plotted."
   },
   {
    "date": "2026-10-27",
