@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-31",
+ "generated_at": "2026-11-04",
  "chart_config": [
   {
    "metric": "accidents_per_million_driverless_miles",
@@ -268,6 +268,13 @@
   {
    "metric": "geofence_area_sq_mi_company_stated",
    "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "geofence_area_sq_mi_company_stated",
+   "group": "breakdown:Waymo",
    "series": [],
    "max_points_per_series": 1,
    "publish": false
@@ -2980,6 +2987,19 @@
    "notes": "Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised."
   },
   {
+   "date": "2026-11-02",
+   "operator": "Tesla",
+   "market": "Fort Worth",
+   "metric": "geofence_area_sq_mi",
+   "value": 143.0,
+   "unit": "sq mi",
+   "source_type": "media",
+   "confidence": "analyst estimate",
+   "source_name": "Not a Tesla App / Sawyer Merritt estimate from Tesla launch map",
+   "source_url": "https://www.notateslaapp.com/news/4932/tesla-expands-robotaxi-service-launches-unsupervised-rides-in-fort-worth",
+   "notes": "Launch geofence, unsupervised (no monitor) from 2 Nov 2026 6am CT. Tesla gave no area; EVwire estimates ~142 sq mi, Robotaxi Log tracing ~104 sq mi. Advertised polygon, not robotracker land area."
+  },
+  {
    "date": "2026-08-31",
    "operator": "Tesla",
    "market": "Houston",
@@ -3669,6 +3689,19 @@
    "notes": "Total fully-public, fully-unsupervised service area (robotracker rules exclude waitlist/rollout cities; Tesla counted Austin only). Land area only."
   },
   {
+   "date": "2026-11-03",
+   "operator": "Waymo",
+   "market": "Los Angeles",
+   "metric": "geofence_area_sq_mi_company_stated",
+   "value": 210.0,
+   "unit": "sq mi",
+   "source_type": "company",
+   "confidence": "company-stated",
+   "source_name": "Waymo announcement via LA Times / LA Magazine",
+   "source_url": "https://www.latimes.com/business/story/2026-11-03/waymo-expands-to-torrance-manhattan-beach-other-corners-of-la-county",
+   "notes": "After adding Torrance, El Segundo and Manhattan Beach (3 Nov 2026). Company-advertised area; robotracker land-area basis (122 sq mi on 27 Oct) differs."
+  },
+  {
    "date": "2026-05-13",
    "operator": "Waymo",
    "market": "all",
@@ -3962,6 +3995,18 @@
    "source_name": "Tesla Robotaxi site (via robotaxistats), Q3 2026",
    "source_url": "https://www.robotaxistats.com/services/tesla/",
    "notes": "Unchanged since 21 Jul: Austin, Dallas, Houston, Miami, Orlando, Tampa driverless. Bay Area supervised excluded; Las Vegas, Phoenix, San Antonio, Jacksonville \"coming soon\". Q3 call added no new market."
+  },
+  {
+   "date": "2026-11-02",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "markets_count",
+   "value": 7.0,
+   "unit": "metros",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Count of markets.csv driverless launch dates",
+   "notes": "Metros with public driverless rides (no one in driver seat; for Tesla no in-car monitor). Counts launch events; see markets.csv sources."
   },
   {
    "date": "2020-10-08",
@@ -4737,6 +4782,16 @@
    "paid_launch_date": "2026-07-21",
    "status": "live",
    "source_url": "https://www.robotaxistats.com/services/tesla/"
+  },
+  {
+   "operator": "Tesla",
+   "market": "Fort Worth",
+   "city": "Fort Worth",
+   "country": "US",
+   "driverless_launch_date": "2026-11-02",
+   "paid_launch_date": "2026-11-02",
+   "status": "live",
+   "source_url": "https://www.notateslaapp.com/news/4932/tesla-expands-robotaxi-service-launches-unsupervised-rides-in-fort-worth"
   },
   {
    "operator": "Tesla",

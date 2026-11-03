@@ -64,3 +64,7 @@ Then run `python3 scripts/build_data.py`.
   - Pony.ai fleet adds 961 (Nov 2025) and 1,159 (end of 2025).
   - Tesla cumulative miles adds the live-counter estimate of 4.05M on 30 Oct.
   - robotaxitracker.com's JSON API refuses automated clients, so it was not scraped.
+
+## Weekly refresh 4 Nov 2026
+- Tesla Fort Worth: unsupervised launch 2 Nov 2026 (markets_count now 7); launch geofence ~143 sq mi (media estimate from Tesla map; Robotaxi Log ~104).
+- Waymo Los Angeles: company-stated 210 sq mi after South Bay expansion (3 Nov 2026).
