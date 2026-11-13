@@ -62,7 +62,7 @@ for i in range(1,len(ends)):
 add('2026-06-30','Waymo','all','injury_crashes_per_million_miles',0.67,'crashes per M mi','company','company-stated','Waymo Safety Impact hub',HUB,'Any-injury-reported crashes, RO, all locations through Jun 2026.')
 add('2026-06-30','Waymo','all','injury_crashes_per_million_miles_human_benchmark',3.77,'crashes per M mi','company','company-stated','Waymo Safety Impact hub',HUB,'Human benchmark same areas, 32% underreporting adjustment.')
 t=d[(d.op=='Tesla')&(d.dt>='2026-02-01')&(d.dt<='2026-09-30')]
-add('2026-09-30','Tesla','all','accidents_per_million_driverless_miles',round(len(t)/3.1,2),'crashes per M mi (cumulative)','derived','derived [E]','NHTSA SGO Tesla ADS reports Feb-Sep 2026 / Tesla 3.1M unsupervised miles (22 Jan-18 Oct 2026)',SGO,f'{len(t)} SGO reports. Rough: Jan 2026 excluded (mix of monitored and unsupervised); SGO reports may include remaining monitored/Bay Area-excluded ops; miles window extends to 18 Oct so rate is likely understated slightly. Any severity, any fault - comparable in definition to Waymo cumulative series but not in mix.')
+add('2026-10-18','Tesla','all','accidents_per_million_driverless_miles',round(len(t)/3.1,2),'crashes per M mi (cumulative)','derived','derived [E]','NHTSA SGO Tesla ADS reports Feb-Sep 2026 / Tesla 3.1M unsupervised miles (22 Jan-18 Oct 2026)',SGO,f'{len(t)} SGO reports. Rough: Jan 2026 excluded (mix of monitored and unsupervised); SGO reports may include remaining monitored/Bay Area-excluded ops; miles window extends to 18 Oct so rate is likely understated slightly. Any severity, any fault - comparable in definition to Waymo cumulative series but not in mix.')
 add('2026-10-18','Tesla','all','injury_crashes_count',0,'people injured','company','company-stated',TS,RTT,'Tesla report: 0 people injured in SGO-reported driverless collisions through 18 Oct 2026.')
 # ---- 4. markets
 mk=[('Waymo','Phoenix','US','2020-10-08','2020-10-08','live',355,'https://waymo.com/blog/2020/10/waymo-is-opening-its-fully-driverless/'),
@@ -79,6 +79,7 @@ mk=[('Waymo','Phoenix','US','2020-10-08','2020-10-08','live',355,'https://waymo.
 ('Tesla','Austin','US','2026-01-22','2025-06-22','live',272,RTT),('Tesla','Dallas','US','2026-04-18','2026-04-18','live',None,RTT),
 ('Tesla','Houston','US','2026-04-18','2026-04-18','live',None,RTT),('Tesla','Miami','US','2026-07-03','2026-07-03','live',None,RTT),
 ('Tesla','Orlando','US','2026-07-21','2026-07-21','live',None,RTT),('Tesla','Tampa','US','2026-07-21','2026-07-21','live',None,RTT),
+('Tesla','Fort Worth','US','2026-11-02','2026-11-02','live',None,'https://www.notateslaapp.com/news/4932/tesla-expands-robotaxi-service-launches-unsupervised-rides-in-fort-worth'),
 ('Tesla','San Francisco Bay Area','US',None,None,'supervised (safety driver) - not driverless',None,RTT),
 ('Tesla','Las Vegas','US',None,None,'coming soon',None,RTT),('Tesla','Phoenix','US',None,None,'coming soon',None,RTT),
 ('Tesla','San Antonio','US',None,None,'coming soon',None,RTT),('Tesla','Jacksonville','US',None,None,'coming soon',None,RTT),
@@ -146,7 +147,7 @@ for _,r in P.iterrows():
     if 'launch promo' in r.operator: key='fare_per_mile_usd_after_subsidy'; sup+=' Verified 31 Oct 2026 on iEV China: "just over 2 yuan" for 5.9 km (3.66 mi) Beijing Yizhuang launch fare, described as not profitable/familiarity-building, i.e. promotional/subsidised. (Source prints $0.30 for 2 yuan, an FX error; at 6.6616 CNY/US$ it is ~$0.30 per ride = $0.08/mi.)'
     if 'pre-subsidy' in r.operator: sup+=' CSC weighted list fare BEFORE subsidy.'
     add(dt,op,city,key,round(v,2),'USD/mi','media/third-party',conf,r.ref,REF.get(r.ref,''),f'{r.operator}: {r.method}. Original: {r.original_quote}.{extra}{sup} CNY at 6.6616/USD (ECB 29 Oct 2026) where applicable.')
-add('2026-10-29','Waymo','all','fare_per_mile_usd',4.75,'USD/mi','derived','derived [E]','Fin Analyst derivation (Other Bets rev, rides/wk, 3.9 mi CPUC trip length)','https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm','Realised revenue per paid mile; midpoint of $4.4-5.1 range from three methods.')
+add('2026-10-29','Waymo','all','fare_per_mile_realised_usd',4.75,'USD/mi','derived','derived [E]','Fin Analyst derivation (Other Bets rev, rides/wk, 3.9 mi CPUC trip length)','https://www.sec.gov/Archives/edgar/data/1652044/000165204426000080/googexhibit991q32026.htm','Realised revenue per paid mile; midpoint of $4.4-5.1 range from three methods.')
 # ---- 7. fleet
 fl=[('2025-05-05','Waymo','all',1500,'Waymo blog May 2025 (1,500+)','https://www.robotaxistats.com/services/waymo/','company-stated'),
 ('2025-12-31','Waymo','all',3067,'TechCrunch','https://techcrunch.com/2026/03/27/waymo-skyrocketing-ridership-in-one-chart/','reported'),
@@ -193,12 +194,175 @@ KT='https://www.koreatimes.co.kr/business/companies/20250521/trying-chinas-robot
 add('2025-05-21','Baidu Apollo Go','Wuhan','fare_per_mile_usd',round(92/19*FX,2),'USD/mi','media','derived [E]','Korea Times test ride',KT,'Single 19 km ride; usual fare CNY92 (before promo) / 19 km, converted.')
 add('2025-05-21','Baidu Apollo Go','Wuhan','fare_per_mile_usd_after_subsidy',round(33/19*FX,2),'USD/mi','media','derived [E]','Korea Times test ride',KT,'Same ride, CNY33 paid after promotional discount.')
 
+
+# ---- consolidated headline series (Andy 31 Oct: one value per company on compare charts)
+BUILD='2026-10-31'
+df=pd.DataFrame(rows)
+def qend(dt):
+    e=pd.Period(dt,'Q').end_time.strftime('%Y-%m-%d'); return min(e,BUILD)
+SUPERVISED={'San Francisco Bay Area'}  # Tesla Bay Area = safety driver, excluded
+f=df[(df.metric=='fare_per_mile_usd')&(df.market!='all')&df.operator.isin(['Waymo','Tesla','Zoox','Baidu Apollo Go'])].copy()
+f=f[~((f.operator=='Tesla')&f.market.isin(SUPERVISED))]
+f['q']=f.date.map(qend)
+cons={}
+for (op,q),g in f.groupby(['operator','q']):
+    if op=='Tesla' and (g.market=='Austin').any():
+        g2=g[g.market=='Austin']; how='Austin Model Y (main fleet) rows only, averaged'
+    else:
+        g2=g; how='simple average of city rows'
+    v=round(g2.value.mean(),2); cons[(op,q)]=v
+    det='; '.join(f"{r.market} {r.date} ${r.value}" for r in g2.itertuples())
+    add(q,op,'all','fare_per_mile_usd',v,'USD/mi','derived','derived [E]','Consolidated from city rows in metrics.csv',g2.source_url.iloc[-1],f'Quarterly headline [E]: {how} in quarter ({det}). List/quoted fares, not realised revenue. Tesla excludes supervised Bay Area; Baidu = before-subsidy.'+(' Q4 2026 to date.' if q==BUILD else ''))
+# Tesla fleet total from third-party counts (same basis, same date)
+tp=df[(df.metric=='fleet_size_third_party_count')&(df.operator=='Tesla')]
+for dt,g in tp.groupby('date'):
+    add(dt,'Tesla','all','fleet_size',g.value.sum(),'vehicles','third-party','derived [E]','Sum of third-party city counts ('+g.source_name.iloc[0]+')',g.source_url.iloc[0],'Sum of '+', '.join(f"{r.market} {int(r.value)}" for r in g.itertuples())+' (driverless cities, sightings basis, same date). Tesla publishes no fleet count; excludes ~760 supervised Bay Area cars.')
+# Tesla company-wide fleet history: Austin tracker counts when Austin was the only Tesla robotaxi city (Bay Area = supervised ride-hail, excluded)
+for dt,v,sn,u in [('2025-11-27',29,'NextBigFuture citing Robotaxi Tracker','https://www.nextbigfuture.com/2025/11/tesla-robotaxi-tracker-shows-29-in-austin.html'),
+                 ('2025-12-22',32,'Electrek citing Robotaxi Tracker (E. McKenna)','https://electrek.co/2025/12/22/tesla-robotaxi-project-austin-much-smaller-than-musk-claims/'),
+                 ('2025-12-29',34,'Jalopnik citing Robotaxi Tracker','https://www.jalopnik.com/2063124/tesla-austin-robotaxi-fleet-34-cars/')]:
+    add(dt,'Tesla','all','fleet_size',v,'vehicles','third-party','derived [E]',sn,u,'Unique Model Ys seen in the Austin robotaxi network per third-party tracker. Austin-only, counted as company-wide because Austin was then Tesla\'s only robotaxi city (Bay Area supervised service excluded). Vehicles ever seen, not concurrently active (~1-5 at a time per Electrek). Launch Jun 2025 was reported as 10-20 cars (CNBC), a range so not plotted.')
+# community [C] X posts quoting Robotaxi Tracker (robotaxitracker.com, @ethanmckanna)
+X={'roman305':('2026-01-23','https://x.com/roman305/status/2014700712794456361',61,164),
+   'herbertong':('2026-03-02','https://x.com/herbertong/status/2028457574320967825',89,341),
+   'lalo2095':('2026-04-03','https://x.com/lalo2095/status/2040086468107079713',94,449),
+   'cztslinvinkor':('2025-11-25','https://x.com/cztslinvinkor/status/1993275746647969969',None,88),
+   'cztslinvinkor2':('2025-12-02','https://x.com/cztslinvinkor/status/1995888869083152667',None,108)}
+for k,(dt,u,aus,bay) in X.items():
+    h='@'+k.rstrip('2')
+    if aus: add(dt,'Tesla','all','fleet_size',aus,'vehicles','community','community [C]',f'X post {h} citing Robotaxi Tracker',u,f'Austin tracker count ({aus}); counted as company-wide because Austin was Tesla\'s only robotaxi city until Dallas/Houston on 2026-04-18. Bay Area supervised fleet excluded. Unique vehicles seen, not concurrently active.')
+    add(dt,'Tesla','San Francisco Bay Area','fleet_size_supervised',bay,'vehicles','community','community [C]',f'X post {h} citing Robotaxi Tracker',u,'Bay Area Tesla ride-hail fleet with safety driver (supervised, not driverless); unique vehicles seen per community tracker.')
+# ---- backfill 31 Oct (tracker sources)
+C='community [C]'
+geo=[('2025-07-20','Austin',42,'https://x.com/AsenjoX/status/1946891463020728654','@AsenjoX: Austin geofence expanded to ~42 sq mi'),
+ ('2025-08-04','Austin',80,'https://x.com/statesman/status/1952505028293415074','@statesman (Austin American-Statesman): ~80 sq mi'),
+ ('2025-08-26','Austin',171,'https://x.com/evmagz/status/1960955004807712870','@evmagz: ~171 sq mi'),
+ ('2025-10-29','Austin',243,'https://x.com/RebeccaRob57689/status/1983561225897468309','X post: Austin 243 sq mi'),
+ ('2026-08-31','Austin',264,'https://x.com/shipfrontierai/status/2094461191246545022','@shipfrontierai geofence sizes'),
+ ('2026-08-31','Dallas',81,'https://x.com/shipfrontierai/status/2094461191246545022','@shipfrontierai geofence sizes'),
+ ('2026-08-31','Miami',31,'https://x.com/shipfrontierai/status/2094461191246545022','@shipfrontierai geofence sizes'),
+ ('2026-08-31','Orlando',26,'https://x.com/shipfrontierai/status/2094461191246545022','@shipfrontierai geofence sizes'),
+ ('2026-08-31','Houston',25,'https://x.com/shipfrontierai/status/2094461191246545022','@shipfrontierai geofence sizes'),
+ ('2026-08-31','Tampa',24,'https://x.com/shipfrontierai/status/2094461191246545022','@shipfrontierai geofence sizes'),
+ ('2026-10-26','Houston',254,'https://x.com/ethanmckanna/status/2114739591303287225','@ethanmckanna: Houston 254 sq mi'),
+ ('2026-10-27','Miami',31,'https://x.com/herbertong/status/2115106475022643381','@herbertong: Miami 31, Tampa 24'),
+ ('2026-10-27','Tampa',24,'https://x.com/herbertong/status/2115106475022643381','@herbertong: Miami 31, Tampa 24')]
+for dt,mk,v,u,sn in geo:
+    add(dt,'Tesla',mk,'geofence_area_sq_mi',v,'sq mi','community',C,sn,u,'Advertised app polygon area as posted on X (community [C]); robotracker.app land-area figures may differ. Trackers note Houston usable area ~26% smaller than advertised.')
+add('2025-06-22','Tesla','all','markets_count',1,'markets','press','reported','CNBC (Austin launch)','https://www.cnbc.com/2025/06/23/tesla-robotaxi-incidents-caught-on-camera-in-austin-get-nhtsa-concern.html','Austin paid robotaxi launch, safety monitor in passenger seat (no driver). Basis change: later points count fully driverless markets (Austin driverless from 22 Jan 2026).')
+add('2026-10-30','Tesla','all','cumulative_driverless_miles',4.05e6,'miles','company','company-stated (estimate)','Tesla Robotaxi Safety Report live counter via robotaxistats','https://www.robotaxistats.com/services/tesla/','Live counter estimate at current fleet pace, read 30 Oct 2026 3:11 PM PT; not a confirmed total.')
+# Tesla accident rate through Q3 (second point)
+add('2026-09-30','Tesla','all','accidents_per_million_driverless_miles',round(21/2.0,2),'crashes per M mi (cumulative)','derived','derived [E]','NHTSA SGO Tesla ADS reports Feb-Aug 2026 (21) / Tesla Q3 2026 Update 2.0M driverless miles',SGO,'Rough: 21 SGO reports with incident dates Feb-Aug 2026 (Sep not yet in SGO file) over 2.0M driverless miles to 30 Sep. Same numerator as the 18 Oct point, so the drop between points reflects miles growth and SGO reporting lag, not a safety change.')
+# Tesla city fleet history (sightings basis, same as Robonomics city counts)
+for dt,v,sn,u in [('2025-11-27',29,'NextBigFuture citing Robotaxi Tracker','https://www.nextbigfuture.com/2025/11/tesla-robotaxi-tracker-shows-29-in-austin.html'),
+ ('2025-12-29',34,'Jalopnik citing Robotaxi Tracker','https://www.jalopnik.com/2063124/tesla-austin-robotaxi-fleet-34-cars/'),
+ ('2026-01-23',61,'X post @roman305 citing Robotaxi Tracker','https://x.com/roman305/status/2014700712794456361'),
+ ('2026-03-02',89,'X post @herbertong citing Robotaxi Tracker','https://x.com/herbertong/status/2028457574320967825'),
+ ('2026-04-03',94,'X post @lalo2095 citing Robotaxi Tracker','https://x.com/lalo2095/status/2040086468107079713')]:
+    add(dt,'Tesla','Austin','fleet_size_third_party_count',v,'vehicles','community' if 'X post' in sn else 'third-party',C if 'X post' in sn else 'analyst estimate',sn,u,'Unique Austin robotaxi vehicles seen by community tracker (includes monitored cars before Jan 2026).')
+add('2026-10-26','Tesla','Houston','fleet_size_third_party_count',34,'vehicles','community',C,'X post @Kostiantyn14954','https://x.com/Kostiantyn14954/status/2114787162847654244','Houston fleet ~34 cars per community tracker post.')
+# Waymo city geofence history (company/press, advertised areas; current rows are robotracker land-area so basis differs)
+for dt,mk,v,u,sn in [('2022-10-01','Phoenix',50,'https://ktar.com/arizona-news/waymo-service-area-desert-ridge-salt-river-fields-phoenix-scottsdale-mesa-tribal-land','KTAR (about 50 sq mi around Chandler, Oct 2022)'),
+ ('2024-06-05','Phoenix',315,'https://ktar.com/arizona-news/waymo-service-area-desert-ridge-salt-river-fields-phoenix-scottsdale-mesa-tribal-land','KTAR / Waymo (315 sq mi)'),
+ ('2024-08-06','San Francisco Bay Area',55,'https://techcrunch.com/2024/08/06/waymo-expands-robotaxi-coverage-in-los-angeles-and-san-francisco/','TechCrunch (about 55 sq mi)'),
+ ('2025-06-18','Los Angeles',120,'https://techcrunch.com/2025/06/17/waymo-robotaxis-are-pushing-into-even-more-california-cities/','TechCrunch (more than 120 sq mi of LA County)')]:
+    add(dt,'Waymo',mk,'geofence_area_sq_mi',v,'sq mi','press','reported',sn,u,'Company-advertised service area as reported; later robotracker.app points are measured land area, so the step partly reflects a change of basis.')
+add('2025-08-26','Waymo','Austin',  'geofence_area_sq_mi',90,'sq mi','community',C,'X post @joehansen (Teslarati)','https://x.com/joehansen/status/1960442541343740289','Waymo Austin geofence ~90 sq mi (advertised).')
+# Pony.ai fleet history
+add('2025-11-23','Pony.ai','all','fleet_size',961,'vehicles','filing','company-stated','Pony.ai Q3 2025 results (SEC 6-K)','https://www.sec.gov/Archives/edgar/data/1969302/000110465925115594/tm2532036d1_ex99-1.htm','961 robotaxis incl. 667 Gen-7, as of 23 Nov 2025.')
+add('2025-12-31','Pony.ai','all','fleet_size',1159,'vehicles','company','company-stated','Pony.ai release (PR Newswire)','https://www.prnewswire.com/apac/news-releases/ponyai-expands-robotaxi-commercialization-with-atbb-advancing-asset-light-scaling-across-urban-and-airport-mobility-302671918.html','Fleet surpassed 1,159 by end-2025.')
+# ---- margin per mile [E]
+COSTPTS={'Waymo':[('2026-04-30',1.43),('2026-10-23',1.36),('2026-10-23',1.43),('2026-10-23',1.98)],
+         'Tesla':[('2026-04-30',0.81),('2026-06-30',0.60)]}
+# central cost = latest cost_per_mile_usd row on/before date, max 12 months old; band = min/max of all cost estimates (incl. DB range ends and MS all-in for Waymo) dated within the prior 12 months
+cpm_rows=df[(df.metric=='cost_per_mile_usd')&(df.market=='all')]
+for (op,q),fare in sorted(cons.items()):
+    if op not in COSTPTS: continue
+    lo_d=(pd.Timestamp(q)-pd.DateOffset(months=12)).strftime('%Y-%m-%d')
+    c=cpm_rows[(cpm_rows.operator==op)&(cpm_rows.date<=q)&(cpm_rows.date>=lo_d)].sort_values('date')
+    band=[v for d_,v in COSTPTS[op] if lo_d<=d_<=q]
+    if c.empty or not band: continue
+    cc=c.iloc[-1]; nt=f'ROUGH ESTIMATE [E]: consolidated list fare ${fare}/mi minus analyst cost ${cc.value}/mi ({cc.source_name}, {cc.date}; carried forward up to 12 months). Excludes overhead, R&D, deadheading and promos unless the cost source includes them; fare is list/quoted, not realised.'
+    add(q,op,'all','margin_per_mile_usd',round(fare-cc.value,2),'USD/mi','derived','derived [E]','Fin Analyst: fare_per_mile_usd minus cost_per_mile_usd',cc.source_url,nt)
+    add(q,op,'all','margin_per_mile_low_usd',round(fare-max(band),2),'USD/mi','derived','derived [E]','Fin Analyst: fare minus highest cost estimate',cc.source_url,f'ROUGH ESTIMATE [E]: ${fare} minus highest cost estimate in prior 12 months (${max(band)}{"; MS all-in incl. overhead" if max(band)==1.98 else ""}).')
+    add(q,op,'all','margin_per_mile_high_usd',round(fare-min(band),2),'USD/mi','derived','derived [E]','Fin Analyst: fare minus lowest cost estimate',cc.source_url,f'ROUGH ESTIMATE [E]: ${fare} minus lowest cost estimate in prior 12 months (${min(band)}).')
+
 # miles per vehicle per day (Tesla Austin derived)
+# ---- weekly refresh 4 Nov 2026
+add('2026-11-02','Tesla','Fort Worth','geofence_area_sq_mi',143,'sq mi','media','analyst estimate','Not a Tesla App / Sawyer Merritt estimate from Tesla launch map','https://www.notateslaapp.com/news/4932/tesla-expands-robotaxi-service-launches-unsupervised-rides-in-fort-worth','Launch geofence, unsupervised (no monitor) from 2 Nov 2026 6am CT. Tesla gave no area; EVwire estimates ~142 sq mi, Robotaxi Log tracing ~104 sq mi. Advertised polygon, not robotracker land area.')
+add('2026-11-03','Waymo','Los Angeles','geofence_area_sq_mi_company_stated',210,'sq mi','company','company-stated','Waymo announcement via LA Times / LA Magazine','https://www.latimes.com/business/story/2026-11-03/waymo-expands-to-torrance-manhattan-beach-other-corners-of-la-county','After adding Torrance, El Segundo and Manhattan Beach (3 Nov 2026). Company-advertised area; robotracker land-area basis (122 sq mi on 27 Oct) differs.')
+add('2026-11-06','Tesla','Texas','fleet_size_registrations',1244,'vehicles','regulator','reported','Texas DMV registry via Robotaxi Tracker weekly newsletter (6 Nov 2026; +164 in week, Model Y 671 + Cybercab 573)','https://weekly.robotaxitracker.com/p/waymo-breaks-up-with-uber-as-tesla','Registered, not necessarily in service; statewide Texas. Waymo Texas registrations 1,285 same week (not tracked).')
+
+# ---- population covered by service areas (added 13 Nov 2026, Andy request)
+# Refresh: save https://robotaxitracker.com/data/population-coverage.json to raw/rtt_population_coverage.json and the
+# population history chart data on https://robotracker.app/leaderboard?sort_by=population to raw/rt_pop_hist.json.
+RTP='https://robotaxitracker.com/data/population-coverage.json'; RTLP='https://robotracker.app/leaderboard?sort_by=population'
+OPN={'waymo':'Waymo','tesla':'Tesla','zoox':'Zoox'}  # Avride not tracked here
+MKN={'Bay Area':'San Francisco Bay Area'}
+SUPERVISED_POP={('Tesla','San Francisco Bay Area')}  # safety driver: kept as variant, excluded from headline/compare
+pc=json.load(open(R+'rtt_population_coverage.json'))
+POPNOTE='Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed.'
+pop_series={}  # (op,market) -> [(date,val)]
+for a in pc['areas']:
+    op=OPN.get(a['provider'])
+    if not op: continue
+    mk=MKN.get(a['name'],a['name'])
+    pts={}
+    for h_ in a.get('history',[]): pts[h_['recorded_at'][:10]]=(h_['population'],h_['sq_mi'])  # same-day re-record: keep last
+    met='population_covered_supervised' if (op,mk) in SUPERVISED_POP else 'population_covered'
+    extra=' Tesla Bay Area runs with a safety driver (not driverless), so it is a variant and excluded from Tesla totals.' if met!='population_covered' else ''
+    if op=='Zoox': extra=' Zoox runs between set pickup points; area is the published boundary, not door-to-door coverage.'
+    if op=='Waymo' and mk in ('Denver','Las Vegas'): extra=' Invite-only (waitlist) as of Oct 2026.'
+    for dt,(v,sq) in sorted(pts.items()):
+        add(dt,op,mk,met,v,'people','third-party','analyst estimate','Robotaxi Tracker population coverage (2020 Census blocks)',RTP,f'{POPNOTE} Boundary {sq:.0f} sq mi.{extra}')
+        if met=='population_covered': pop_series.setdefault((op,mk),[]).append((dt,v))
+# company total over all published (non-supervised) areas, carried forward between recordings [E]
+for op in sorted({o for o,_ in pop_series}):
+    ser={k:v for k,v in pop_series.items() if k[0]==op}
+    for dt in sorted({d_ for v in ser.values() for d_,_ in v}):
+        parts=[(k[1],[x for d_,x in v if d_<=dt][-1]) for k,v in ser.items() if any(d_<=dt for d_,_ in v)]
+        add(dt,op,'all','population_covered_published_areas',sum(x for _,x in parts),'people','derived','derived [E]','Sum of Robotaxi Tracker city population coverage (2020 Census blocks)',RTP,'Sum over '+str(len(parts))+' published service areas incl. invite-only/early-rider areas: '+', '.join(f'{m} {x:,}' for m,x in sorted(parts))+'. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then.')
+# headline company-wide series: robotracker.app leaderboard (strict: public, no waitlist, no safety monitor, adequate fleet)
+rp=json.load(open(R+'rt_pop_hist.json'))
+for op,data in rp['datasets'].items():
+    seen=None
+    for p_ in sorted(data,key=lambda x:x['x']):
+        v=round(p_['y']*1e6)
+        if v==0 or v==seen: continue   # 2025-01-01 axis anchor and read-date carry-forward points repeat the prior value
+        seen=v
+        add(p_['x'],op,'all','population_covered',v,'people','third-party','analyst estimate','robotracker.app leaderboard population history',RTLP,'Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). '+('Tesla counts Austin only; its other cities are listed as testing.' if op=='Tesla' else 'Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas.')+' Same basis as geofence_area_sq_mi.')
+# outside the US: company statements
+add('2022-12-26','Baidu Apollo Go','Wuhan','population_covered',1.0e6,'people','company','company-stated','Baidu announcement via Wuhan government','https://english.wuhan.gov.cn/H_1/NWP/202212/t20221227_2120473.shtml','Apollo Go service area 130 km2 in Wuhan "serving a population of 1 million" after tripling the area.')
+add('2024-05-15','Baidu Apollo Go','Wuhan','population_covered',7.7e6,'people','company','company-stated','Baidu Apollo Day 2024 (via QbitAI)','https://www.qbitai.com/2024/05/142906.html','Wuhan service area 3,000 km2 "covering nearly 7.7 million people". Baidu PR of 8 Mar 2024 gives the same 3,000 km2 / 7.7M for Wuhan\'s AV test zone overall.')
+add('2026-08-18','Pony.ai','Guangzhou','population_covered',7.0e6,'people','company','company-stated','Pony.ai Q2 2026 earnings call (CEO James Peng)','https://www.fool.com/earnings/call-transcripts/2026/08/25/pony-ai-pony-q2-2026-earnings-call-transcript/','Guangzhou operating area across Haizhu, Tianhe, Huangpu and Panyu districts "covering a population of over 7 million" (lower bound).')
 df=pd.DataFrame(rows).sort_values(['metric','operator','market','date'])
 dup=df[df.duplicated(['operator','market','metric','date'],keep=False)]
 assert dup.empty, dup.to_string()
 df.to_csv(O+'metrics.csv',index=False)
-mdf=pd.DataFrame(M); mdf.to_csv(O+'markets.csv',index=False)
+
+cfg=[]
+for m,g in df.groupby('metric'):
+    a=g[g.market=='all']
+    if len(a):
+        n=a.groupby('operator').size(); ops=sorted(n[n>=2].index)
+        cfg.append(dict(metric=m,group='compare',series=ops,max_points_per_series=int(n.max()),publish=bool(len(ops)>=2)))
+    for op in sorted(g[g.market!='all'].operator.unique()):
+        n=g[(g.operator==op)&(g.market!='all')].groupby('market').size(); ser=sorted(n[n>=2].index)
+        cfg.append(dict(metric=m,group=f'breakdown:{op}',series=ser,max_points_per_series=int(n.max()),publish=bool(len(ser)>=2)))
+for e in cfg:  # population: mostly single dated snapshots per city, so show all cities rather than the >=2-point rule
+    if e['metric'] in ('population_covered','population_covered_published_areas') and e['group'].startswith('breakdown:'):
+        e['series']=sorted(df[(df.metric==e['metric'])&(df.operator==e['group'][10:])&(df.market!='all')].market.unique()); e['publish']=len(e['series'])>=1
+    if e['metric']=='population_covered_published_areas' and e['group']=='compare':
+        e['series']=sorted(df[(df.metric==e['metric'])&(df.market=='all')].operator.unique()); e['publish']=True
+# latest population per market for markets.csv
+_pl=df[df.metric=='population_covered'].sort_values('date').groupby(['operator','market']).last()
+for x in M:
+    k=(x['operator'],x['city'])
+    if k in _pl.index: x['population_covered']=int(_pl.loc[k].value); x['population_date']=_pl.loc[k].date; x['population_source']=_pl.loc[k].source_url
+mdf=pd.DataFrame(M); mdf['population_covered']=mdf['population_covered'].astype('Int64'); mdf.to_csv(O+'markets.csv',index=False)
 clean=lambda recs:[{k:v for k,v in r.items() if v is not None and v==v and v!=''} for r in recs]
-json.dump({'generated_at':'2026-10-31','metrics':clean(df.to_dict('records')),'markets':clean(mdf.to_dict('records'))},open(O+'data.json','w'),indent=1)
+json.dump({'generated_at':'2026-11-13','chart_config':cfg,'metrics':clean(df.to_dict('records')),'markets':[{k:(int(v) if k=='population_covered' else v) for k,v in r.items()} for r in clean(mdf.astype(object).where(mdf.notna(),None).to_dict('records'))]},open(O+'data.json','w'),indent=1)
+import shutil
+os.makedirs('/workspace/robotaxi-site/data',exist_ok=True)
+for fn in ['data.json','metrics.csv','markets.csv','README.md']: shutil.copy(O+fn,'/workspace/robotaxi-site/data/'+fn)
 print(df.groupby(['metric','operator']).agg(n=('value','size'),start=('date','min'),end=('date','max')).to_string())

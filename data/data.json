@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-04",
+ "generated_at": "2026-11-13",
  "chart_config": [
   {
    "metric": "accidents_per_million_driverless_miles",
@@ -379,6 +379,102 @@
   {
    "metric": "paid_rides_per_week_peak",
    "group": "compare",
+   "series": [],
+   "max_points_per_series": 1,
+   "publish": false
+  },
+  {
+   "metric": "population_covered",
+   "group": "compare",
+   "series": [
+    "Tesla",
+    "Waymo"
+   ],
+   "max_points_per_series": 27,
+   "publish": true
+  },
+  {
+   "metric": "population_covered",
+   "group": "breakdown:Baidu Apollo Go",
+   "series": [
+    "Wuhan"
+   ],
+   "max_points_per_series": 2,
+   "publish": true
+  },
+  {
+   "metric": "population_covered",
+   "group": "breakdown:Pony.ai",
+   "series": [
+    "Guangzhou"
+   ],
+   "max_points_per_series": 1,
+   "publish": true
+  },
+  {
+   "metric": "population_covered",
+   "group": "breakdown:Tesla",
+   "series": [
+    "Austin",
+    "Dallas",
+    "Fort Worth",
+    "Houston",
+    "Miami",
+    "Orlando",
+    "San Antonio",
+    "Tampa"
+   ],
+   "max_points_per_series": 3,
+   "publish": true
+  },
+  {
+   "metric": "population_covered",
+   "group": "breakdown:Waymo",
+   "series": [
+    "Atlanta",
+    "Austin",
+    "Dallas",
+    "Denver",
+    "Houston",
+    "Las Vegas",
+    "Los Angeles",
+    "Miami",
+    "Nashville",
+    "Orlando",
+    "Phoenix",
+    "San Antonio",
+    "San Diego",
+    "San Francisco Bay Area",
+    "Tampa"
+   ],
+   "max_points_per_series": 3,
+   "publish": true
+  },
+  {
+   "metric": "population_covered",
+   "group": "breakdown:Zoox",
+   "series": [
+    "Austin",
+    "Las Vegas",
+    "San Francisco Bay Area"
+   ],
+   "max_points_per_series": 2,
+   "publish": true
+  },
+  {
+   "metric": "population_covered_published_areas",
+   "group": "compare",
+   "series": [
+    "Tesla",
+    "Waymo",
+    "Zoox"
+   ],
+   "max_points_per_series": 6,
+   "publish": true
+  },
+  {
+   "metric": "population_covered_supervised",
+   "group": "breakdown:Tesla",
    "series": [],
    "max_points_per_series": 1,
    "publish": false
@@ -4425,6 +4521,1137 @@
    "notes": "Peak week; fully driverless operational rides (may include discounted)."
   },
   {
+   "date": "2022-12-26",
+   "operator": "Baidu Apollo Go",
+   "market": "Wuhan",
+   "metric": "population_covered",
+   "value": 1000000.0,
+   "unit": "people",
+   "source_type": "company",
+   "confidence": "company-stated",
+   "source_name": "Baidu announcement via Wuhan government",
+   "source_url": "https://english.wuhan.gov.cn/H_1/NWP/202212/t20221227_2120473.shtml",
+   "notes": "Apollo Go service area 130 km2 in Wuhan \"serving a population of 1 million\" after tripling the area."
+  },
+  {
+   "date": "2024-05-15",
+   "operator": "Baidu Apollo Go",
+   "market": "Wuhan",
+   "metric": "population_covered",
+   "value": 7700000.0,
+   "unit": "people",
+   "source_type": "company",
+   "confidence": "company-stated",
+   "source_name": "Baidu Apollo Day 2024 (via QbitAI)",
+   "source_url": "https://www.qbitai.com/2024/05/142906.html",
+   "notes": "Wuhan service area 3,000 km2 \"covering nearly 7.7 million people\". Baidu PR of 8 Mar 2024 gives the same 3,000 km2 / 7.7M for Wuhan's AV test zone overall."
+  },
+  {
+   "date": "2026-08-18",
+   "operator": "Pony.ai",
+   "market": "Guangzhou",
+   "metric": "population_covered",
+   "value": 7000000.0,
+   "unit": "people",
+   "source_type": "company",
+   "confidence": "company-stated",
+   "source_name": "Pony.ai Q2 2026 earnings call (CEO James Peng)",
+   "source_url": "https://www.fool.com/earnings/call-transcripts/2026/08/25/pony-ai-pony-q2-2026-earnings-call-transcript/",
+   "notes": "Guangzhou operating area across Haizhu, Tianhe, Huangpu and Panyu districts \"covering a population of over 7 million\" (lower bound)."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "population_covered",
+   "value": 799134.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 264 sq mi."
+  },
+  {
+   "date": "2026-10-23",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "population_covered",
+   "value": 808477.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 272 sq mi."
+  },
+  {
+   "date": "2026-11-09",
+   "operator": "Tesla",
+   "market": "Austin",
+   "metric": "population_covered",
+   "value": 988287.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 442 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Tesla",
+   "market": "Dallas",
+   "metric": "population_covered",
+   "value": 381077.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 81 sq mi."
+  },
+  {
+   "date": "2026-11-02",
+   "operator": "Tesla",
+   "market": "Fort Worth",
+   "metric": "population_covered",
+   "value": 453812.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 144 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Tesla",
+   "market": "Houston",
+   "metric": "population_covered",
+   "value": 83286.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 25 sq mi."
+  },
+  {
+   "date": "2026-10-26",
+   "operator": "Tesla",
+   "market": "Houston",
+   "metric": "population_covered",
+   "value": 1236931.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 254 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Tesla",
+   "market": "Miami",
+   "metric": "population_covered",
+   "value": 175715.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 31 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Tesla",
+   "market": "Orlando",
+   "metric": "population_covered",
+   "value": 89099.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 26 sq mi."
+  },
+  {
+   "date": "2026-11-09",
+   "operator": "Tesla",
+   "market": "San Antonio",
+   "metric": "population_covered",
+   "value": 1032190.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 274 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Tesla",
+   "market": "Tampa",
+   "metric": "population_covered",
+   "value": 105554.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 24 sq mi."
+  },
+  {
+   "date": "2026-09-04",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 786394.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Tesla counts Austin only; its other cities are listed as testing. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-10-23",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 790149.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Tesla counts Austin only; its other cities are listed as testing. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-11-09",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 954993.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Tesla counts Austin only; its other cities are listed as testing. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Atlanta",
+   "metric": "population_covered",
+   "value": 510665.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 112 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Austin",
+   "metric": "population_covered",
+   "value": 648603.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 151 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Dallas",
+   "metric": "population_covered",
+   "value": 280811.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 48 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Denver",
+   "metric": "population_covered",
+   "value": 351867.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 59 sq mi. Invite-only (waitlist) as of Oct 2026."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Houston",
+   "metric": "population_covered",
+   "value": 302916.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 49 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Las Vegas",
+   "metric": "population_covered",
+   "value": 128220.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 23 sq mi. Invite-only (waitlist) as of Oct 2026."
+  },
+  {
+   "date": "2026-11-06",
+   "operator": "Waymo",
+   "market": "Las Vegas",
+   "metric": "population_covered",
+   "value": 235091.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 47 sq mi. Invite-only (waitlist) as of Oct 2026."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Los Angeles",
+   "metric": "population_covered",
+   "value": 1703039.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 125 sq mi."
+  },
+  {
+   "date": "2026-11-03",
+   "operator": "Waymo",
+   "market": "Los Angeles",
+   "metric": "population_covered",
+   "value": 2527215.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 213 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Miami",
+   "metric": "population_covered",
+   "value": 1067744.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 145 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Nashville",
+   "metric": "population_covered",
+   "value": 182380.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 50 sq mi."
+  },
+  {
+   "date": "2026-10-27",
+   "operator": "Waymo",
+   "market": "Nashville",
+   "metric": "population_covered",
+   "value": 249823.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 76 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Orlando",
+   "metric": "population_covered",
+   "value": 193494.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 66 sq mi."
+  },
+  {
+   "date": "2026-10-27",
+   "operator": "Waymo",
+   "market": "Orlando",
+   "metric": "population_covered",
+   "value": 315805.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 109 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Phoenix",
+   "metric": "population_covered",
+   "value": 1366689.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 356 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "San Antonio",
+   "metric": "population_covered",
+   "value": 203306.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 59 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "San Diego",
+   "metric": "population_covered",
+   "value": 344103.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 47 sq mi."
+  },
+  {
+   "date": "2026-10-17",
+   "operator": "Waymo",
+   "market": "San Diego",
+   "metric": "population_covered",
+   "value": 345018.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 48 sq mi."
+  },
+  {
+   "date": "2026-10-27",
+   "operator": "Waymo",
+   "market": "San Diego",
+   "metric": "population_covered",
+   "value": 551222.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 87 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "San Francisco Bay Area",
+   "metric": "population_covered",
+   "value": 2594757.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 335 sq mi."
+  },
+  {
+   "date": "2026-10-23",
+   "operator": "Waymo",
+   "market": "San Francisco Bay Area",
+   "metric": "population_covered",
+   "value": 2594757.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 335 sq mi."
+  },
+  {
+   "date": "2026-11-03",
+   "operator": "Waymo",
+   "market": "San Francisco Bay Area",
+   "metric": "population_covered",
+   "value": 2619269.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 343 sq mi."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "Tampa",
+   "metric": "population_covered",
+   "value": 169408.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 44 sq mi."
+  },
+  {
+   "date": "2026-10-17",
+   "operator": "Waymo",
+   "market": "Tampa",
+   "metric": "population_covered",
+   "value": 171531.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 45 sq mi."
+  },
+  {
+   "date": "2020-10-08",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 235040.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2022-12-01",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 444225.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2023-05-04",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 815312.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2023-07-07",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 972058.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2024-06-05",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 1172509.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2024-06-25",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 1998101.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2024-08-06",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 2109689.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2024-10-02",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 2328277.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2024-11-12",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 3529521.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2025-02-11",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 3611648.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2025-06-04",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 3775470.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2025-06-18",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 4168807.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2025-06-24",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 4508501.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2025-07-17",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 4726298.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2025-11-12",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 5672438.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-01-13",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 5823755.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-01-28",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 5969127.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-04-15",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 6795298.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-05-13",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 7219097.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-06-25",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 7396177.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-07-01",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 7762738.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-07-14",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 7993406.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-08-04",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 8273017.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-08-13",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 8482170.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-08-20",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 8787439.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-10-14",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 9506973.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-10-27",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered",
+   "value": 10782349.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "robotracker.app leaderboard population history",
+   "source_url": "https://robotracker.app/leaderboard?sort_by=population",
+   "notes": "Residents inside active service areas that are public with no waitlist, no safety monitor and an adequate fleet (robotracker.app rules). Includes Austin and Atlanta (Uber app); excludes invite-only Denver and Las Vegas. Same basis as geofence_area_sq_mi."
+  },
+  {
+   "date": "2026-11-10",
+   "operator": "Zoox",
+   "market": "Austin",
+   "metric": "population_covered",
+   "value": 120639.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 15 sq mi. Zoox runs between set pickup points; area is the published boundary, not door-to-door coverage."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Zoox",
+   "market": "Las Vegas",
+   "metric": "population_covered",
+   "value": 67151.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 24 sq mi. Zoox runs between set pickup points; area is the published boundary, not door-to-door coverage."
+  },
+  {
+   "date": "2026-11-12",
+   "operator": "Zoox",
+   "market": "Las Vegas",
+   "metric": "population_covered",
+   "value": 107930.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 30 sq mi. Zoox runs between set pickup points; area is the published boundary, not door-to-door coverage."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Zoox",
+   "market": "San Francisco Bay Area",
+   "metric": "population_covered",
+   "value": 357744.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 11 sq mi. Zoox runs between set pickup points; area is the published boundary, not door-to-door coverage."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 1633865.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 6 published service areas incl. invite-only/early-rider areas: Austin 799,134, Dallas 381,077, Houston 83,286, Miami 175,715, Orlando 89,099, Tampa 105,554. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-10-23",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 1643208.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 6 published service areas incl. invite-only/early-rider areas: Austin 808,477, Dallas 381,077, Houston 83,286, Miami 175,715, Orlando 89,099, Tampa 105,554. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-10-26",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 2796853.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 6 published service areas incl. invite-only/early-rider areas: Austin 808,477, Dallas 381,077, Houston 1,236,931, Miami 175,715, Orlando 89,099, Tampa 105,554. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-11-02",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 3250665.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 7 published service areas incl. invite-only/early-rider areas: Austin 808,477, Dallas 381,077, Fort Worth 453,812, Houston 1,236,931, Miami 175,715, Orlando 89,099, Tampa 105,554. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-11-09",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 4462665.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 8 published service areas incl. invite-only/early-rider areas: Austin 988,287, Dallas 381,077, Fort Worth 453,812, Houston 1,236,931, Miami 175,715, Orlando 89,099, San Antonio 1,032,190, Tampa 105,554. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 10048002.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 15 published service areas incl. invite-only/early-rider areas: Atlanta 510,665, Austin 648,603, Dallas 280,811, Denver 351,867, Houston 302,916, Las Vegas 128,220, Los Angeles 1,703,039, Miami 1,067,744, Nashville 182,380, Orlando 193,494, Phoenix 1,366,689, San Antonio 203,306, San Diego 344,103, San Francisco Bay Area 2,594,757, Tampa 169,408. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-10-17",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 10051040.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 15 published service areas incl. invite-only/early-rider areas: Atlanta 510,665, Austin 648,603, Dallas 280,811, Denver 351,867, Houston 302,916, Las Vegas 128,220, Los Angeles 1,703,039, Miami 1,067,744, Nashville 182,380, Orlando 193,494, Phoenix 1,366,689, San Antonio 203,306, San Diego 345,018, San Francisco Bay Area 2,594,757, Tampa 171,531. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-10-23",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 10051040.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 15 published service areas incl. invite-only/early-rider areas: Atlanta 510,665, Austin 648,603, Dallas 280,811, Denver 351,867, Houston 302,916, Las Vegas 128,220, Los Angeles 1,703,039, Miami 1,067,744, Nashville 182,380, Orlando 193,494, Phoenix 1,366,689, San Antonio 203,306, San Diego 345,018, San Francisco Bay Area 2,594,757, Tampa 171,531. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-10-27",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 10446998.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 15 published service areas incl. invite-only/early-rider areas: Atlanta 510,665, Austin 648,603, Dallas 280,811, Denver 351,867, Houston 302,916, Las Vegas 128,220, Los Angeles 1,703,039, Miami 1,067,744, Nashville 249,823, Orlando 315,805, Phoenix 1,366,689, San Antonio 203,306, San Diego 551,222, San Francisco Bay Area 2,594,757, Tampa 171,531. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-11-03",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 11295686.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 15 published service areas incl. invite-only/early-rider areas: Atlanta 510,665, Austin 648,603, Dallas 280,811, Denver 351,867, Houston 302,916, Las Vegas 128,220, Los Angeles 2,527,215, Miami 1,067,744, Nashville 249,823, Orlando 315,805, Phoenix 1,366,689, San Antonio 203,306, San Diego 551,222, San Francisco Bay Area 2,619,269, Tampa 171,531. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-11-06",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 11402557.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 15 published service areas incl. invite-only/early-rider areas: Atlanta 510,665, Austin 648,603, Dallas 280,811, Denver 351,867, Houston 302,916, Las Vegas 235,091, Los Angeles 2,527,215, Miami 1,067,744, Nashville 249,823, Orlando 315,805, Phoenix 1,366,689, San Antonio 203,306, San Diego 551,222, San Francisco Bay Area 2,619,269, Tampa 171,531. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Zoox",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 424895.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 2 published service areas incl. invite-only/early-rider areas: Las Vegas 67,151, San Francisco Bay Area 357,744. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-11-10",
+   "operator": "Zoox",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 545534.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 3 published service areas incl. invite-only/early-rider areas: Austin 120,639, Las Vegas 67,151, San Francisco Bay Area 357,744. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-11-12",
+   "operator": "Zoox",
+   "market": "all",
+   "metric": "population_covered_published_areas",
+   "value": 586313.0,
+   "unit": "people",
+   "source_type": "derived",
+   "confidence": "derived [E]",
+   "source_name": "Sum of Robotaxi Tracker city population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Sum over 3 published service areas incl. invite-only/early-rider areas: Austin 120,639, Las Vegas 107,930, San Francisco Bay Area 357,744. Excludes supervised areas (Tesla Bay Area). Areas first recorded 15 Sep 2026, so the series starts then."
+  },
+  {
+   "date": "2026-09-15",
+   "operator": "Tesla",
+   "market": "San Francisco Bay Area",
+   "metric": "population_covered_supervised",
+   "value": 4856551.0,
+   "unit": "people",
+   "source_type": "third-party",
+   "confidence": "analyst estimate",
+   "source_name": "Robotaxi Tracker population coverage (2020 Census blocks)",
+   "source_url": "https://robotaxitracker.com/data/population-coverage.json",
+   "notes": "Residents of 2020 Census blocks whose internal point is inside the published service boundary (Robotaxi Tracker method). Census 2020 counts, not current population; boundaries digitized approximately. Date = when the tracker recorded this boundary, not necessarily when the area changed. Boundary 1096 sq mi. Tesla Bay Area runs with a safety driver (not driverless), so it is a variant and excluded from Tesla totals."
+  },
+  {
    "date": "2024-06-30",
    "operator": "Baidu Apollo Go",
    "market": "all",
@@ -4565,7 +5792,10 @@
    "status": "live",
    "geofence_sq_mi": 355.0,
    "geofence_km2": 919.4,
-   "source_url": "https://waymo.com/blog/2020/10/waymo-is-opening-its-fully-driverless/"
+   "source_url": "https://waymo.com/blog/2020/10/waymo-is-opening-its-fully-driverless/",
+   "population_covered": 1366689,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4578,7 +5808,10 @@
    "geofence_sq_mi": 338.0,
    "geofence_km2": 875.4,
    "source_url": "https://www.cpuc.ca.gov/news-and-updates/all-news/cpuc-approves-permits-for-cruise-and-waymo-to-charge-fares-for-passenger-service-in-sf-2023",
-   "notes": "Driverless start date = robotracker first SF area point; paid driverless from CPUC approval 10 Aug 2023."
+   "notes": "Driverless start date = robotracker first SF area point; paid driverless from CPUC approval 10 Aug 2023.",
+   "population_covered": 2619269,
+   "population_date": "2026-11-03",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4591,7 +5824,10 @@
    "geofence_sq_mi": 122.0,
    "geofence_km2": 316.0,
    "source_url": "https://robotracker.app/leaderboard",
-   "notes": "Paid rides to waitlist from Mar 2024; open to all 12 Nov 2024."
+   "notes": "Paid rides to waitlist from Mar 2024; open to all 12 Nov 2024.",
+   "population_covered": 2527215,
+   "population_date": "2026-11-03",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4603,7 +5839,10 @@
    "status": "live (Uber app)",
    "geofence_sq_mi": 150.0,
    "geofence_km2": 388.5,
-   "source_url": "https://robotracker.app/leaderboard"
+   "source_url": "https://robotracker.app/leaderboard",
+   "population_covered": 648603,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4615,7 +5854,10 @@
    "status": "live (Uber app)",
    "geofence_sq_mi": 112.0,
    "geofence_km2": 290.1,
-   "source_url": "https://robotracker.app/leaderboard"
+   "source_url": "https://robotracker.app/leaderboard",
+   "population_covered": 510665,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4627,7 +5869,10 @@
    "status": "live",
    "geofence_sq_mi": 154.0,
    "geofence_km2": 398.9,
-   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en"
+   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en",
+   "population_covered": 1067744,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4639,7 +5884,10 @@
    "status": "live",
    "geofence_sq_mi": 48.0,
    "geofence_km2": 124.3,
-   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en"
+   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en",
+   "population_covered": 280811,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4651,7 +5899,10 @@
    "status": "live",
    "geofence_sq_mi": 49.0,
    "geofence_km2": 126.9,
-   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en"
+   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en",
+   "population_covered": 302916,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4663,7 +5914,10 @@
    "status": "live",
    "geofence_sq_mi": 59.0,
    "geofence_km2": 152.8,
-   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en"
+   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en",
+   "population_covered": 203306,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4675,7 +5929,10 @@
    "status": "live",
    "geofence_sq_mi": 66.0,
    "geofence_km2": 170.9,
-   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en"
+   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en",
+   "population_covered": 315805,
+   "population_date": "2026-10-27",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4687,7 +5944,10 @@
    "status": "live",
    "geofence_sq_mi": 50.0,
    "geofence_km2": 129.5,
-   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en"
+   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en",
+   "population_covered": 249823,
+   "population_date": "2026-10-27",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4697,7 +5957,10 @@
    "driverless_launch_date": "2026-09-01",
    "paid_launch_date": "2026-09-01",
    "status": "live",
-   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en"
+   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en",
+   "population_covered": 351867,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4709,7 +5972,10 @@
    "status": "live",
    "geofence_sq_mi": 44.0,
    "geofence_km2": 114.0,
-   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en"
+   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en",
+   "population_covered": 171531,
+   "population_date": "2026-10-17",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4721,7 +5987,10 @@
    "status": "live",
    "geofence_sq_mi": 46.0,
    "geofence_km2": 119.1,
-   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en"
+   "source_url": "https://support.google.com/waymo/announcements/12766613?hl=en",
+   "population_covered": 551222,
+   "population_date": "2026-10-27",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Waymo",
@@ -4731,7 +6000,10 @@
    "driverless_launch_date": "2026-09-14",
    "paid_launch_date": "2026-09-14",
    "status": "rolling out (riders added gradually)",
-   "source_url": "https://www.robotaxistats.com/services/waymo/"
+   "source_url": "https://www.robotaxistats.com/services/waymo/",
+   "population_covered": 235091,
+   "population_date": "2026-11-06",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Tesla",
@@ -4744,7 +6016,10 @@
    "geofence_sq_mi": 272.0,
    "geofence_km2": 704.5,
    "source_url": "https://www.robotaxistats.com/services/tesla/",
-   "notes": "Paid service from 22 Jun 2025 with passenger-seat safety monitor; no monitor from 22 Jan 2026. Area 272 sq mi per robotracker."
+   "notes": "Paid service from 22 Jun 2025 with passenger-seat safety monitor; no monitor from 22 Jan 2026. Area 272 sq mi per robotracker.",
+   "population_covered": 988287,
+   "population_date": "2026-11-09",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Tesla",
@@ -4754,7 +6029,10 @@
    "driverless_launch_date": "2026-04-18",
    "paid_launch_date": "2026-04-18",
    "status": "live",
-   "source_url": "https://www.robotaxistats.com/services/tesla/"
+   "source_url": "https://www.robotaxistats.com/services/tesla/",
+   "population_covered": 381077,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Tesla",
@@ -4764,7 +6042,10 @@
    "driverless_launch_date": "2026-04-18",
    "paid_launch_date": "2026-04-18",
    "status": "live",
-   "source_url": "https://www.robotaxistats.com/services/tesla/"
+   "source_url": "https://www.robotaxistats.com/services/tesla/",
+   "population_covered": 1236931,
+   "population_date": "2026-10-26",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Tesla",
@@ -4774,7 +6055,10 @@
    "driverless_launch_date": "2026-07-03",
    "paid_launch_date": "2026-07-03",
    "status": "live",
-   "source_url": "https://www.robotaxistats.com/services/tesla/"
+   "source_url": "https://www.robotaxistats.com/services/tesla/",
+   "population_covered": 175715,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Tesla",
@@ -4784,7 +6068,10 @@
    "driverless_launch_date": "2026-07-21",
    "paid_launch_date": "2026-07-21",
    "status": "live",
-   "source_url": "https://www.robotaxistats.com/services/tesla/"
+   "source_url": "https://www.robotaxistats.com/services/tesla/",
+   "population_covered": 89099,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Tesla",
@@ -4794,7 +6081,10 @@
    "driverless_launch_date": "2026-07-21",
    "paid_launch_date": "2026-07-21",
    "status": "live",
-   "source_url": "https://www.robotaxistats.com/services/tesla/"
+   "source_url": "https://www.robotaxistats.com/services/tesla/",
+   "population_covered": 105554,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Tesla",
@@ -4804,7 +6094,10 @@
    "driverless_launch_date": "2026-11-02",
    "paid_launch_date": "2026-11-02",
    "status": "live",
-   "source_url": "https://www.notateslaapp.com/news/4932/tesla-expands-robotaxi-service-launches-unsupervised-rides-in-fort-worth"
+   "source_url": "https://www.notateslaapp.com/news/4932/tesla-expands-robotaxi-service-launches-unsupervised-rides-in-fort-worth",
+   "population_covered": 453812,
+   "population_date": "2026-11-02",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Tesla",
@@ -4836,7 +6129,10 @@
    "city": "San Antonio",
    "country": "US",
    "status": "coming soon",
-   "source_url": "https://www.robotaxistats.com/services/tesla/"
+   "source_url": "https://www.robotaxistats.com/services/tesla/",
+   "population_covered": 1032190,
+   "population_date": "2026-11-09",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Tesla",
@@ -4853,7 +6149,10 @@
    "country": "US",
    "paid_launch_date": "2026-08-10",
    "status": "live (paid)",
-   "source_url": "https://www.reuters.com/business/autos-transportation/amazons-zoox-start-paid-robotaxi-rides-vegas-next-week-2026-08-05/"
+   "source_url": "https://www.reuters.com/business/autos-transportation/amazons-zoox-start-paid-robotaxi-rides-vegas-next-week-2026-08-05/",
+   "population_covered": 107930,
+   "population_date": "2026-11-12",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Zoox",
@@ -4861,7 +6160,10 @@
    "city": "San Francisco Bay Area",
    "country": "US",
    "status": "testing / early riders",
-   "source_url": "https://www.robotaxistats.com/services/zoox/"
+   "source_url": "https://www.robotaxistats.com/services/zoox/",
+   "population_covered": 357744,
+   "population_date": "2026-09-15",
+   "population_source": "https://robotaxitracker.com/data/population-coverage.json"
   },
   {
    "operator": "Pony.ai",
@@ -4869,7 +6171,10 @@
    "city": "Guangzhou",
    "country": "CN",
    "status": "live",
-   "source_url": "https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-reports-second-quarter-2026-financial-results-total"
+   "source_url": "https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-reports-second-quarter-2026-financial-results-total",
+   "population_covered": 7000000,
+   "population_date": "2026-08-18",
+   "population_source": "https://www.fool.com/earnings/call-transcripts/2026/08/25/pony-ai-pony-q2-2026-earnings-call-transcript/"
   },
   {
    "operator": "Pony.ai",
@@ -4893,7 +6198,10 @@
    "city": "Wuhan",
    "country": "CN",
    "status": "live",
-   "source_url": "https://wh.bendibao.com/news/2024229/176753.shtm"
+   "source_url": "https://wh.bendibao.com/news/2024229/176753.shtm",
+   "population_covered": 7700000,
+   "population_date": "2024-05-15",
+   "population_source": "https://www.qbitai.com/2024/05/142906.html"
   },
   {
    "operator": "Baidu Apollo Go",

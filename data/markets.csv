@@ -1,35 +1,35 @@
-operator,market,city,country,driverless_launch_date,paid_launch_date,status,geofence_sq_mi,geofence_km2,source_url,notes
-Waymo,Phoenix,Phoenix,US,2020-10-08,2020-10-08,live,355.0,919.4,https://waymo.com/blog/2020/10/waymo-is-opening-its-fully-driverless/,
-Waymo,San Francisco Bay Area,San Francisco Bay Area,US,2022-12-01,2023-08-10,live,338.0,875.4,https://www.cpuc.ca.gov/news-and-updates/all-news/cpuc-approves-permits-for-cruise-and-waymo-to-charge-fares-for-passenger-service-in-sf-2023,Driverless start date = robotracker first SF area point; paid driverless from CPUC approval 10 Aug 2023.
-Waymo,Los Angeles,Los Angeles,US,2024-03-14,2024-11-12,live,122.0,316.0,https://robotracker.app/leaderboard,Paid rides to waitlist from Mar 2024; open to all 12 Nov 2024.
-Waymo,Austin,Austin,US,2025-03-04,2025-03-04,live (Uber app),150.0,388.5,https://robotracker.app/leaderboard,
-Waymo,Atlanta,Atlanta,US,2025-06-24,2025-06-24,live (Uber app),112.0,290.1,https://robotracker.app/leaderboard,
-Waymo,Miami,Miami,US,2026-01-22,2026-01-22,live,154.0,398.9,https://support.google.com/waymo/announcements/12766613?hl=en,
-Waymo,Dallas,Dallas,US,2026-02-24,2026-02-24,live,48.0,124.3,https://support.google.com/waymo/announcements/12766613?hl=en,
-Waymo,Houston,Houston,US,2026-02-24,2026-02-24,live,49.0,126.9,https://support.google.com/waymo/announcements/12766613?hl=en,
-Waymo,San Antonio,San Antonio,US,2026-02-24,2026-02-24,live,59.0,152.8,https://support.google.com/waymo/announcements/12766613?hl=en,
-Waymo,Orlando,Orlando,US,2026-02-24,2026-02-24,live,66.0,170.9,https://support.google.com/waymo/announcements/12766613?hl=en,
-Waymo,Nashville,Nashville,US,2026-04-07,2026-04-07,live,50.0,129.5,https://support.google.com/waymo/announcements/12766613?hl=en,
-Waymo,Denver,Denver,US,2026-09-01,2026-09-01,live,,,https://support.google.com/waymo/announcements/12766613?hl=en,
-Waymo,Tampa,Tampa,US,2026-09-01,2026-09-01,live,44.0,114.0,https://support.google.com/waymo/announcements/12766613?hl=en,
-Waymo,San Diego,San Diego,US,2026-09-01,2026-09-01,live,46.0,119.1,https://support.google.com/waymo/announcements/12766613?hl=en,
-Waymo,Las Vegas,Las Vegas,US,2026-09-14,2026-09-14,rolling out (riders added gradually),,,https://www.robotaxistats.com/services/waymo/,
-Tesla,Austin,Austin,US,2026-01-22,2025-06-22,live,272.0,704.5,https://www.robotaxistats.com/services/tesla/,Paid service from 22 Jun 2025 with passenger-seat safety monitor; no monitor from 22 Jan 2026. Area 272 sq mi per robotracker.
-Tesla,Dallas,Dallas,US,2026-04-18,2026-04-18,live,,,https://www.robotaxistats.com/services/tesla/,
-Tesla,Houston,Houston,US,2026-04-18,2026-04-18,live,,,https://www.robotaxistats.com/services/tesla/,
-Tesla,Miami,Miami,US,2026-07-03,2026-07-03,live,,,https://www.robotaxistats.com/services/tesla/,
-Tesla,Orlando,Orlando,US,2026-07-21,2026-07-21,live,,,https://www.robotaxistats.com/services/tesla/,
-Tesla,Tampa,Tampa,US,2026-07-21,2026-07-21,live,,,https://www.robotaxistats.com/services/tesla/,
-Tesla,Fort Worth,Fort Worth,US,2026-11-02,2026-11-02,live,,,https://www.notateslaapp.com/news/4932/tesla-expands-robotaxi-service-launches-unsupervised-rides-in-fort-worth,
-Tesla,San Francisco Bay Area,San Francisco Bay Area,US,,,supervised (safety driver) - not driverless,,,https://www.robotaxistats.com/services/tesla/,
-Tesla,Las Vegas,Las Vegas,US,,,coming soon,,,https://www.robotaxistats.com/services/tesla/,
-Tesla,Phoenix,Phoenix,US,,,coming soon,,,https://www.robotaxistats.com/services/tesla/,
-Tesla,San Antonio,San Antonio,US,,,coming soon,,,https://www.robotaxistats.com/services/tesla/,
-Tesla,Jacksonville,Jacksonville,US,,,coming soon,,,https://www.robotaxistats.com/services/tesla/,
-Zoox,Las Vegas,Las Vegas,US,,2026-08-10,live (paid),,,https://www.reuters.com/business/autos-transportation/amazons-zoox-start-paid-robotaxi-rides-vegas-next-week-2026-08-05/,
-Zoox,San Francisco Bay Area,San Francisco Bay Area,US,,,testing / early riders,,,https://www.robotaxistats.com/services/zoox/,
-Pony.ai,Guangzhou,Guangzhou,CN,,,live,,,https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-reports-second-quarter-2026-financial-results-total,
-Pony.ai,Shenzhen,Shenzhen,CN,,,live,,,https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-reports-second-quarter-2026-financial-results-total,
-Pony.ai,Singapore,Singapore,SG,,,public via ComfortDelGro Zig app,,,https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-reports-second-quarter-2026-financial-results-total,
-Baidu Apollo Go,Wuhan,Wuhan,CN,,,live,,,https://wh.bendibao.com/news/2024229/176753.shtm,
-Baidu Apollo Go,Dubai,Dubai,AE,,,"live (fully driverless commercial, Q2 2026)",,,https://www.sec.gov/Archives/edgar/data/1329099/000119312526355431/d112854dex991.htm,
+operator,market,city,country,driverless_launch_date,paid_launch_date,status,geofence_sq_mi,geofence_km2,source_url,notes,population_covered,population_date,population_source
+Waymo,Phoenix,Phoenix,US,2020-10-08,2020-10-08,live,355.0,919.4,https://waymo.com/blog/2020/10/waymo-is-opening-its-fully-driverless/,,1366689,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Waymo,San Francisco Bay Area,San Francisco Bay Area,US,2022-12-01,2023-08-10,live,338.0,875.4,https://www.cpuc.ca.gov/news-and-updates/all-news/cpuc-approves-permits-for-cruise-and-waymo-to-charge-fares-for-passenger-service-in-sf-2023,Driverless start date = robotracker first SF area point; paid driverless from CPUC approval 10 Aug 2023.,2619269,2026-11-03,https://robotaxitracker.com/data/population-coverage.json
+Waymo,Los Angeles,Los Angeles,US,2024-03-14,2024-11-12,live,122.0,316.0,https://robotracker.app/leaderboard,Paid rides to waitlist from Mar 2024; open to all 12 Nov 2024.,2527215,2026-11-03,https://robotaxitracker.com/data/population-coverage.json
+Waymo,Austin,Austin,US,2025-03-04,2025-03-04,live (Uber app),150.0,388.5,https://robotracker.app/leaderboard,,648603,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Waymo,Atlanta,Atlanta,US,2025-06-24,2025-06-24,live (Uber app),112.0,290.1,https://robotracker.app/leaderboard,,510665,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Waymo,Miami,Miami,US,2026-01-22,2026-01-22,live,154.0,398.9,https://support.google.com/waymo/announcements/12766613?hl=en,,1067744,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Waymo,Dallas,Dallas,US,2026-02-24,2026-02-24,live,48.0,124.3,https://support.google.com/waymo/announcements/12766613?hl=en,,280811,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Waymo,Houston,Houston,US,2026-02-24,2026-02-24,live,49.0,126.9,https://support.google.com/waymo/announcements/12766613?hl=en,,302916,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Waymo,San Antonio,San Antonio,US,2026-02-24,2026-02-24,live,59.0,152.8,https://support.google.com/waymo/announcements/12766613?hl=en,,203306,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Waymo,Orlando,Orlando,US,2026-02-24,2026-02-24,live,66.0,170.9,https://support.google.com/waymo/announcements/12766613?hl=en,,315805,2026-10-27,https://robotaxitracker.com/data/population-coverage.json
+Waymo,Nashville,Nashville,US,2026-04-07,2026-04-07,live,50.0,129.5,https://support.google.com/waymo/announcements/12766613?hl=en,,249823,2026-10-27,https://robotaxitracker.com/data/population-coverage.json
+Waymo,Denver,Denver,US,2026-09-01,2026-09-01,live,,,https://support.google.com/waymo/announcements/12766613?hl=en,,351867,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Waymo,Tampa,Tampa,US,2026-09-01,2026-09-01,live,44.0,114.0,https://support.google.com/waymo/announcements/12766613?hl=en,,171531,2026-10-17,https://robotaxitracker.com/data/population-coverage.json
+Waymo,San Diego,San Diego,US,2026-09-01,2026-09-01,live,46.0,119.1,https://support.google.com/waymo/announcements/12766613?hl=en,,551222,2026-10-27,https://robotaxitracker.com/data/population-coverage.json
+Waymo,Las Vegas,Las Vegas,US,2026-09-14,2026-09-14,rolling out (riders added gradually),,,https://www.robotaxistats.com/services/waymo/,,235091,2026-11-06,https://robotaxitracker.com/data/population-coverage.json
+Tesla,Austin,Austin,US,2026-01-22,2025-06-22,live,272.0,704.5,https://www.robotaxistats.com/services/tesla/,Paid service from 22 Jun 2025 with passenger-seat safety monitor; no monitor from 22 Jan 2026. Area 272 sq mi per robotracker.,988287,2026-11-09,https://robotaxitracker.com/data/population-coverage.json
+Tesla,Dallas,Dallas,US,2026-04-18,2026-04-18,live,,,https://www.robotaxistats.com/services/tesla/,,381077,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Tesla,Houston,Houston,US,2026-04-18,2026-04-18,live,,,https://www.robotaxistats.com/services/tesla/,,1236931,2026-10-26,https://robotaxitracker.com/data/population-coverage.json
+Tesla,Miami,Miami,US,2026-07-03,2026-07-03,live,,,https://www.robotaxistats.com/services/tesla/,,175715,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Tesla,Orlando,Orlando,US,2026-07-21,2026-07-21,live,,,https://www.robotaxistats.com/services/tesla/,,89099,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Tesla,Tampa,Tampa,US,2026-07-21,2026-07-21,live,,,https://www.robotaxistats.com/services/tesla/,,105554,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Tesla,Fort Worth,Fort Worth,US,2026-11-02,2026-11-02,live,,,https://www.notateslaapp.com/news/4932/tesla-expands-robotaxi-service-launches-unsupervised-rides-in-fort-worth,,453812,2026-11-02,https://robotaxitracker.com/data/population-coverage.json
+Tesla,San Francisco Bay Area,San Francisco Bay Area,US,,,supervised (safety driver) - not driverless,,,https://www.robotaxistats.com/services/tesla/,,,,
+Tesla,Las Vegas,Las Vegas,US,,,coming soon,,,https://www.robotaxistats.com/services/tesla/,,,,
+Tesla,Phoenix,Phoenix,US,,,coming soon,,,https://www.robotaxistats.com/services/tesla/,,,,
+Tesla,San Antonio,San Antonio,US,,,coming soon,,,https://www.robotaxistats.com/services/tesla/,,1032190,2026-11-09,https://robotaxitracker.com/data/population-coverage.json
+Tesla,Jacksonville,Jacksonville,US,,,coming soon,,,https://www.robotaxistats.com/services/tesla/,,,,
+Zoox,Las Vegas,Las Vegas,US,,2026-08-10,live (paid),,,https://www.reuters.com/business/autos-transportation/amazons-zoox-start-paid-robotaxi-rides-vegas-next-week-2026-08-05/,,107930,2026-11-12,https://robotaxitracker.com/data/population-coverage.json
+Zoox,San Francisco Bay Area,San Francisco Bay Area,US,,,testing / early riders,,,https://www.robotaxistats.com/services/zoox/,,357744,2026-09-15,https://robotaxitracker.com/data/population-coverage.json
+Pony.ai,Guangzhou,Guangzhou,CN,,,live,,,https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-reports-second-quarter-2026-financial-results-total,,7000000,2026-08-18,https://www.fool.com/earnings/call-transcripts/2026/08/25/pony-ai-pony-q2-2026-earnings-call-transcript/
+Pony.ai,Shenzhen,Shenzhen,CN,,,live,,,https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-reports-second-quarter-2026-financial-results-total,,,,
+Pony.ai,Singapore,Singapore,SG,,,public via ComfortDelGro Zig app,,,https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-reports-second-quarter-2026-financial-results-total,,,,
+Baidu Apollo Go,Wuhan,Wuhan,CN,,,live,,,https://wh.bendibao.com/news/2024229/176753.shtm,,7700000,2024-05-15,https://www.qbitai.com/2024/05/142906.html
+Baidu Apollo Go,Dubai,Dubai,AE,,,"live (fully driverless commercial, Q2 2026)",,,https://www.sec.gov/Archives/edgar/data/1329099/000119312526355431/d112854dex991.htm,,,,

@@ -1,14 +1,14 @@
 // ---------- config ----------
 const COLORS={waymo:'#1e88ff',tesla:'#e53935',zoox:'#ab47bc','pony.ai':'#26c6a6','baidu apollo go':'#ffb300',weride:'#8bc34a'};
 const EXTRA=['#ff7043','#5c6bc0','#ec407a','#9ccc65','#00acc1','#bdbdbd'];
-const METRIC_ORDER=['accidents_per_million_driverless_miles','accidents_per_million_driverless_miles_quarterly','crash_reports_count','injury_crashes_per_million_miles','injury_crashes_count','cumulative_driverless_miles','markets_count','geofence_area_sq_mi','cost_per_mile_usd','cost_per_mile_target_usd','cost_per_mile_next_gen_usd','fare_per_mile_usd','fleet_size','paid_rides_per_week','rides_per_quarter','cumulative_rides'];
-const TITLES={accidents_per_million_driverless_miles:'Accidents per million driverless miles',cumulative_driverless_miles:'Cumulative fully driverless miles',markets_count:'Number of markets',geofence_area_sq_mi:'Geofence area',cost_per_mile_usd:'Cost per mile (USD)',fare_per_mile_usd:'Fare per mile (USD)',fleet_size:'Fleet size',paid_rides_per_week:'Paid rides per week',margin_per_mile_usd:'Margin per mile (fare minus cost), rough estimate',
+const METRIC_ORDER=['accidents_per_million_driverless_miles','accidents_per_million_driverless_miles_quarterly','crash_reports_count','injury_crashes_per_million_miles','injury_crashes_count','cumulative_driverless_miles','markets_count','geofence_area_sq_mi','population_covered','population_covered_published_areas','cost_per_mile_usd','cost_per_mile_target_usd','cost_per_mile_next_gen_usd','fare_per_mile_usd','fleet_size','paid_rides_per_week','rides_per_quarter','cumulative_rides'];
+const TITLES={accidents_per_million_driverless_miles:'Accidents per million driverless miles',cumulative_driverless_miles:'Cumulative fully driverless miles',markets_count:'Number of markets',geofence_area_sq_mi:'Geofence area',cost_per_mile_usd:'Cost per mile (USD)',fare_per_mile_usd:'Fare per mile (USD)',fleet_size:'Fleet size',population_covered:'Population covered by service areas',population_covered_published_areas:'Population covered, all published areas',population_covered_supervised:'Population covered, supervised areas',paid_rides_per_week:'Paid rides per week',margin_per_mile_usd:'Margin per mile (fare minus cost), rough estimate',
   accidents_per_million_driverless_miles_quarterly:'Crashes per million driverless miles (per quarter)',crash_reports_count:'NHTSA crash reports (count per quarter)',
   injury_crashes_per_million_miles:'Injury crashes per million miles',injury_crashes_count:'Injury crashes (count)',cost_per_mile_target_usd:'Target cost per mile (USD)',
   cost_per_mile_next_gen_usd:'Next-gen vehicle cost per mile (USD)',cumulative_rides:'Cumulative rides',rides_per_quarter:'Rides per quarter',
   other_bets_revenue_usd:'Alphabet Other Bets revenue (USD, quarterly)',other_bets_operating_income_usd:'Alphabet Other Bets operating income (USD, quarterly)',robotaxi_revenue_usd:'Robotaxi revenue (USD)'};
-const KEY_METRICS=new Set(['accidents_per_million_driverless_miles','cumulative_driverless_miles','markets_count','geofence_area_sq_mi','cost_per_mile_usd','fare_per_mile_usd','fleet_size','paid_rides_per_week']);
-const SHORT={accidents_per_million_driverless_miles:'Accidents / M driverless mi',cumulative_driverless_miles:'Driverless miles (cum.)',markets_count:'Markets',geofence_area_sq_mi:'Geofence',cost_per_mile_usd:'Cost / mile',fare_per_mile_usd:'Fare / mile',fleet_size:'Fleet',paid_rides_per_week:'Paid rides / week'};
+const KEY_METRICS=new Set(['accidents_per_million_driverless_miles','cumulative_driverless_miles','markets_count','geofence_area_sq_mi','population_covered','population_covered_published_areas','cost_per_mile_usd','fare_per_mile_usd','fleet_size','paid_rides_per_week']);
+const SHORT={accidents_per_million_driverless_miles:'Accidents / M driverless mi',cumulative_driverless_miles:'Driverless miles (cum.)',markets_count:'Markets',geofence_area_sq_mi:'Geofence',population_covered:'Population covered',population_covered_published_areas:'Pop., all published areas',cost_per_mile_usd:'Cost / mile',fare_per_mile_usd:'Fare / mile',fleet_size:'Fleet',paid_rides_per_week:'Paid rides / week'};
 const isBench=o=>/^human/i.test(String(o).trim());const BENCH='#9e9e9e';
 const BENCH_SHADES=['#9e9e9e','#cfcfcf','#6f6f6f','#b5b5b5'],BENCH_DASH=[[6,4],[2,3],[10,4],[4,2,1,2]];const benchIdx={};
 const bIdx=o=>benchIdx[o]??(benchIdx[o]=Object.keys(benchIdx).length);
@@ -18,7 +18,16 @@ const VARIANTS={cost_per_mile_allin_usd:{base:'cost_per_mile_usd',label:'all-in'
   paid_rides_per_week_peak:{base:'paid_rides_per_week',label:'peak'},paid_rides_per_week_avg_derived:{base:'paid_rides_per_week',label:'avg, derived'},
   fleet_size_third_party_count:{base:'fleet_size',label:'third-party count',name:(op,mk)=>`${op} ${mk} (third-party count)`},
   margin_per_mile_low_usd:{base:'margin_per_mile_usd',label:'low',band:true},margin_per_mile_high_usd:{base:'margin_per_mile_usd',label:'high',band:true},
-  fleet_size_registrations:{base:'fleet_size',label:'registrations',name:(op,mk)=>`${op} ${mk} registrations`}};
+  fleet_size_registrations:{base:'fleet_size',label:'registrations',name:(op,mk)=>`${op} ${mk} registrations`},
+  population_covered_published_areas:{base:'population_covered',label:'all published areas'},population_covered_supervised:{base:'population_covered',label:'supervised'}};
+// One-line explanations shown under a chart title (by metric key and mode)
+const NOTES={'population_covered|compare':'Residents inside fully public service areas (no waitlist, no safety monitor), per robotracker.app. Tesla counts Austin only so far.',
+  'population_covered_published_areas|compare':'Sum of every published service area per company, incl. invite-only and early-rider areas (2020 Census, Robotaxi Tracker). Tracked from Sep 2026.',
+  'population_covered|detail':'Residents inside each city\u2019s service area (US: 2020 Census blocks via Robotaxi Tracker; China: company statements).'};
+// Snapshot metrics: value holds until the next recorded change, so draw as steps
+const STEPPED=new Set(['population_covered','population_covered_published_areas']);
+// Detail charts drawn as latest-value bars per city (one snapshot per city reads better than many single points)
+const BAR_DETAIL=new Set(['population_covered']);
 const AGG=new Set(['','all','total','global','overall','aggregate','company','worldwide','*']);
 const SQMI_TO_KM2=2.58999;
 
@@ -115,7 +124,7 @@ function plan(rows){
   const ops=[...new Set(rows.map(r=>r.operator).filter(o=>!isBench(o)))].sort((a,b)=>rank(a)-rank(b)||a.localeCompare(b));
   const compare=[],detail={};let margin=[];
   const benchFor=(k,mk)=>rows.filter(r=>r.metric===k&&isBench(r.operator)&&mk.has(r.market));
-  const addDetail=(o,k,or)=>{if(or.length<2)return;const mk=new Set(or.map(r=>r.market));(detail[o]=detail[o]||[]).push({key:k,rows:or.concat(benchFor(k,mk))})};
+  const addDetail=(o,k,or)=>{if(or.length<(BAR_DETAIL.has(k)?1:2))return;const mk=new Set(or.map(r=>r.market));(detail[o]=detail[o]||[]).push({key:k,rows:or.concat(benchFor(k,mk))})};
   const covered=new Set();
   if(cfg){
     for(const e of cfg){covered.add(e.metric);if(e.publish===false||!e.publish&&e.publish!==undefined)continue;
@@ -153,7 +162,7 @@ function render(){
   const d=$('#detail');d.innerHTML='';
   for(const o of P.ops){if(!P.detail[o])continue;const sec=document.createElement('div');
     sec.innerHTML=`<h3 class="coh" style="--c:${color(o)}">${esc(o)}</h3><div class="grid"></div>`;d.appendChild(sec);
-    P.detail[o].forEach(x=>drawChart(sec.querySelector('.grid'),x.key,x.rows,'detail',o))}
+    P.detail[o].forEach(x=>(BAR_DETAIL.has(x.key)?drawBars:drawChart)(sec.querySelector('.grid'),x.key,x.rows,'detail',o))}
   renderFleet();
 }
 
@@ -177,7 +186,7 @@ function drawChart(el,m,rows,mode,op){
     (groups[k]=groups[k]||{op:r.operator,market:r.market,agg:isA(r),variant:V,bench:b,pts:[]}).pts.push(r)}
   const base0=rows.find(r=>!r.variant)||rows[0];const unitTxt=unitOf(m)||(base0&&base0.unit&&!/^usd/i.test(base0.unit)?base0.unit:'');
   const box=document.createElement('div');box.className='box'+(mode==='margin'?' wide':'');
-  const sub=mode==='margin'?'<div class="muted">Rough estimate: list fares minus analyst cost estimates; Waymo&#39;s realised revenue (~$4.75/mi) implies a lower margin. Shaded band = low–high cost-estimate range.</div>':'';
+  const sub=NOTES[m+'|'+mode]?`<div class="muted">${esc(NOTES[m+'|'+mode])}</div>`:mode==='margin'?'<div class="muted">Rough estimate: list fares minus analyst cost estimates; Waymo&#39;s realised revenue (~$4.75/mi) implies a lower margin. Shaded band = low–high cost-estimate range.</div>':'';
   box.innerHTML=`<h4>${esc(title(m))}${unitTxt&&!/usd/i.test(title(m))?' <span class="muted">('+esc(unitTxt)+')</span>':''}</h4>${sub}<div class="cw"><canvas></canvas></div>`;el.appendChild(box);
   const sc=v=>m==='geofence_area_sq_mi'&&km()?v*SQMI_TO_KM2:v;
   const dates=rows.map(r=>Date.parse(r.date)),dmin=Math.min(...dates),dmax=Math.max(...dates);
@@ -193,7 +202,7 @@ function drawChart(el,m,rows,mode,op){
     if(g.variant&&g.variant.band){const hi=g.variant.label==='high';
       ds.push({label:hi?'_bandhi_'+g.op:'_bandlo_'+g.op,data,borderColor:'transparent',backgroundColor:color(g.op)+'33',pointRadius:0,pointHoverRadius:4,showLine:true,fill:hi?'-1':false,order:5,band:true,spanGaps:false});continue}
     ds.push({label:b?k+' (benchmark)':k,data,borderColor:col,backgroundColor:col,
-      showLine:g.pts.length>1,borderDash:b?BENCH_DASH[bIdx(g.op)%4]:g.variant?[5,4]:[],
+      showLine:g.pts.length>1,stepped:STEPPED.has(m)?'after':false,borderDash:b?BENCH_DASH[bIdx(g.op)%4]:g.variant?[5,4]:[],
       pointRadius:g.pts.length===1?6:4,pointHoverRadius:8,pointBorderColor:'#0b0f17',pointBorderWidth:1,borderWidth:g.agg&&!g.variant?2.5:2,spanGaps:false,tension:0,order:b?2:1,
       segment:{borderColor:ctx=>ctx.p0.parsed.x===ctx.p1.parsed.x?'transparent':undefined},
       pointStyle:p=>{const c=(p.raw?p.raw.r.confidence+' '+p.raw.r.source_type:'').toLowerCase();return /estimate|\[e\]/.test(c)&&!/derived/.test(c)?'triangle':/derived/.test(c)?'rectRot':'circle'}});
@@ -215,11 +224,34 @@ function drawChart(el,m,rows,mode,op){
   charts.push(c);
 }
 
+// Latest value per city as horizontal bars (detail mode). Earlier dated values are listed in the tooltip.
+function drawBars(el,m,rows,mode,op){
+  const by={};rows.filter(r=>!r.variant&&!isBench(r.operator)).forEach(r=>{const k=isA(r)?'All markets':r.market;(by[k]=by[k]||[]).push(r)});
+  const items=Object.entries(by).map(([k,a])=>{a.sort((x,y)=>x.date<y.date?-1:1);return{k,r:a[a.length-1],hist:a}}).sort((a,b)=>b.r.value-a.r.value);
+  if(!items.length)return;
+  const box=document.createElement('div');box.className='box';box.style.height=Math.max(220,110+items.length*30)+'px';
+  const n=NOTES[m+'|'+mode];
+  box.innerHTML=`<h4>${esc(title(m))} <span class="muted">(latest, people)</span></h4>${n?`<div class="muted">${esc(n)}</div>`:''}<div class="cw"><canvas></canvas></div>`;el.appendChild(box);
+  const col=color(op);
+  const c=new Chart(box.querySelector('canvas'),{type:'bar',data:{labels:items.map(i=>i.k),datasets:[{label:op,data:items.map(i=>i.r.value),
+      backgroundColor:items.map(i=>/estimate|\[e\]/i.test(i.r.confidence)?col+'b3':col),borderColor:col,borderWidth:1,borderRadius:3,maxBarThickness:22}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,animation:false,
+      scales:{x:{beginAtZero:true,ticks:{color:'#7d8a9c',maxTicksLimit:6,callback:v=>fmt(v)},grid:{color:'#1e2636'}},y:{ticks:{color:'#c9d1dc',font:{size:11},autoSkip:false},grid:{display:false}}},
+      plugins:{legend:{display:false},tooltip:{callbacks:{title:it=>items[it[0].dataIndex].k,
+        label:it=>{const i=items[it.dataIndex];return `${fmt(i.r.value)} people (${i.r.date})`},
+        afterLabel:it=>{const i=items[it.dataIndex],r=i.r;return[i.hist.length>1?'Earlier: '+i.hist.slice(0,-1).map(h=>`${h.date} ${fmt(h.value)}`).join(', '):'',`Source: ${r.source_name||'—'}`,`Type: ${r.source_type||'—'} · Confidence: ${r.confidence||'—'}`,r.notes?`Note: ${r.notes.length>160?r.notes.slice(0,160)+'…':r.notes}`:'',r.source_url?'(tap again to open source)':''].filter(Boolean)}}}},
+      onClick:(e,els)=>{if(!els.length)return;const r=items[els[0].index].r;if(r.source_url&&c._lastTip===r)window.open(r.source_url,'_blank');c._lastTip=r}}});
+  charts.push(c);
+}
+
 function renderFleet(){
   const latest={};vis().filter(r=>r.metric==='fleet_size'&&!isBench(r.operator)).forEach(r=>{const k=r.operator+'|'+r.market;if(!latest[k]||r.date>latest[k].date)latest[k]=r});
   const mk={};(DATA.markets||[]).forEach(x=>{mk[(x.operator||'')+'|'+(x.market||x.city||'')]=x});
+  const pop={};DATA.rows.filter(r=>r.metric==='population_covered'||r.metric==='population_covered_published_areas').forEach(r=>{const k=r.operator+'|'+(isA(r)?'all':r.market)+'|'+r.metric;if(!pop[k]||r.date>pop[k].date)pop[k]=r});
+  const popOf=r=>{const m=isA(r)?'all':r.market;const P=pop[r.operator+'|'+m+'|population_covered'],V=pop[r.operator+'|'+m+'|population_covered_published_areas'];const p=m==='all'?(V||P):(P||V); // company rows: all published areas, matching fleet totals across all cities
+    return p?`<span title="${esc((p.source_name||'')+' · '+p.date+(p.variant?' · '+p.variant:''))}">${fmt(p.value)}${p.variant?'*':''}</span>`:'<span class="muted">—</span>'};
   const list=Object.values(latest).sort((a,b)=>rank(a.operator)-rank(b.operator)||a.operator.localeCompare(b.operator)||b.value-a.value);
-  $('#fleet').innerHTML='<tr><th>Operator</th><th>City / market</th><th>Fleet</th><th>Date</th><th>Confidence</th><th>Source</th></tr>'+(list.length?list.map(r=>{const x=mk[r.operator+'|'+r.market]||{};
-    return`<tr><td style="color:${color(r.operator)}">${esc(r.operator)}</td><td>${isA(r)?'All markets':esc(r.market)}${x.status?` <span class="muted">${esc(x.status)}</span>`:''}</td><td>${fmt(r.value)}</td><td>${esc(r.date)}</td><td><span class="conf">${esc(r.confidence||r.source_type)}</span></td><td>${r.source_url?`<a href="${esc(r.source_url)}" target="_blank" rel="noopener">${esc(r.source_name||'link')}</a>`:esc(r.source_name)}</td></tr>`}).join(''):'<tr><td colspan="6" class="muted">No fleet data</td></tr>');
+  $('#fleet').innerHTML='<tr><th>Operator</th><th>City / market</th><th>Fleet</th><th>Population covered</th><th>Date</th><th>Confidence</th><th>Source</th></tr>'+(list.length?list.map(r=>{const x=mk[r.operator+'|'+r.market]||{};
+    return`<tr><td style="color:${color(r.operator)}">${esc(r.operator)}</td><td>${isA(r)?'All markets':esc(r.market)}${x.status?` <span class="muted">${esc(x.status)}</span>`:''}</td><td>${fmt(r.value)}</td><td>${popOf(r)}</td><td>${esc(r.date)}</td><td><span class="conf">${esc(r.confidence||r.source_type)}</span></td><td>${r.source_url?`<a href="${esc(r.source_url)}" target="_blank" rel="noopener">${esc(r.source_name||'link')}</a>`:esc(r.source_name)}</td></tr>`}).join(''):'<tr><td colspan="7" class="muted">No fleet data</td></tr>');
 }
 init();

@@ -20,6 +20,9 @@ confidence values: `reported` (regulator or media), `company-stated`, `analyst e
 | fare_per_mile_usd | Price per mile charged to riders. [E] rows divide a per-ride fare by an assumed or route distance. CNY is converted at 6.6616 per US$ (ECB, 29 Oct 2026). Ranges are stored as midpoints. Tesla rows are Model Y (main fleet) unless noted; for Apollo Go, this key is the before-subsidy list fare. |
 | fare_per_mile_usd_cybercab | Tesla Cybercab fares (Austin, Sep 2026, same route as a Model Y fare). |
 | fare_per_mile_usd_after_subsidy | Fare paid after subsidy or promotion: Wuhan $0.27 (CSC's assumed CNY1.1/km, 2024) and Beijing Yizhuang $0.08 (launch fare of ~CNY2 for 5.9 km, verified on iEV China; the source prints $0.30, which is per ride). |
+| population_covered | People living inside the service area. Company-wide (`all`): robotracker.app leaderboard population history (strict rules: public, no waitlist, no safety monitor, adequate fleet; Tesla = Austin only), same basis as geofence_area_sq_mi. City rows (US): Robotaxi Tracker population-coverage.json, 2020 Census blocks whose internal point is inside the published boundary, dated when the tracker recorded the boundary (from 15 Sep 2026). Wuhan (Baidu) and Guangzhou (Pony.ai, "over 7 million") are company statements. All US figures are third-party estimates. |
+| population_covered_published_areas | [E] Sum of the Robotaxi Tracker city rows per company, carried forward: all published areas incl. invite-only (Waymo Denver, Las Vegas) and Zoox early-rider areas; excludes supervised Tesla Bay Area. |
+| population_covered_supervised | Tesla Bay Area (safety driver) population, kept separate and excluded from Tesla totals. |
 | fleet_size | Vehicles in service or operated, as stated by the company or media (e.g. Tesla Austin 300+ Cybercabs). |
 | fleet_size_registrations | Tesla, market `Texas`: Texas DMV automated-vehicle registrations. **Registrations are NOT vehicles in service.** Tesla publishes no fleet count. |
 | paid_rides_per_week | Company-stated weekly paid rides (Waymo, lower bounds). |
@@ -68,3 +71,5 @@ Then run `python3 scripts/build_data.py`.
 ## Weekly refresh 4 Nov 2026
 - Tesla Fort Worth: unsupervised launch 2 Nov 2026 (markets_count now 7); launch geofence ~143 sq mi (media estimate from Tesla map; Robotaxi Log ~104).
 - Waymo Los Angeles: company-stated 210 sq mi after South Bay expansion (3 Nov 2026).
+
+Population raw snapshots (read 13 Nov 2026): `raw/rtt_population_coverage.json` (https://robotaxitracker.com/data/population-coverage.json) and `raw/rt_pop_hist.json` (robotracker.app leaderboard population chart).
