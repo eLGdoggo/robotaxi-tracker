@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-13",
+ "generated_at": "2026-11-18",
  "chart_config": [
   {
    "metric": "accidents_per_million_driverless_miles",
@@ -72,7 +72,7 @@
     "Tesla",
     "Waymo"
    ],
-   "max_points_per_series": 12,
+   "max_points_per_series": 13,
    "publish": true
   },
   {
@@ -209,7 +209,16 @@
    "series": [
     "Texas"
    ],
-   "max_points_per_series": 8,
+   "max_points_per_series": 9,
+   "publish": false
+  },
+  {
+   "metric": "fleet_size_registrations",
+   "group": "breakdown:Waymo",
+   "series": [
+    "Texas"
+   ],
+   "max_points_per_series": 2,
    "publish": false
   },
   {
@@ -1627,6 +1636,19 @@
    "notes": "Live counter estimate at current fleet pace, read 30 Oct 2026 3:11 PM PT; not a confirmed total."
   },
   {
+   "date": "2026-11-16",
+   "operator": "Tesla",
+   "market": "all",
+   "metric": "cumulative_driverless_miles",
+   "value": 5300000.0,
+   "unit": "miles",
+   "source_type": "media",
+   "confidence": "analyst estimate",
+   "source_name": "JPMorgan note (16 Nov 2026) via Self Drive News",
+   "source_url": "https://selfdrivenews.com/tesla-robotaxi-miles-5-million-owner-car-trials/",
+   "notes": "JPMorgan estimate of ~5.3M cumulative unsupervised miles. Tesla page counter read 5,471,048 on 17 Nov but does not say driverless-only, so not used."
+  },
+  {
    "date": "2026-06-30",
    "operator": "Waymo",
    "market": "Atlanta",
@@ -1846,6 +1868,19 @@
    "source_name": "Waymo Safety Impact hub (via robotaxistats release table)",
    "source_url": "https://waymo.com/safety/impact/",
    "notes": "Rider-only (no human driver) miles, ride-hail cities. Pre-Dec-2025 values are sums of location rows; coverage varies by release."
+  },
+  {
+   "date": "2026-10-28",
+   "operator": "Waymo",
+   "market": "all",
+   "metric": "cumulative_driverless_miles",
+   "value": 300000000.0,
+   "unit": "miles",
+   "source_type": "company",
+   "confidence": "company-stated",
+   "source_name": "Alphabet Q3 2026 remarks (Pichai), via CNBC",
+   "source_url": "https://www.cnbc.com/2026/10/28/as-waymo-expands-overseas-it-remains-a-niche-cash-burning-business.html",
+   "notes": "\"More than 300 million fully autonomous miles.\""
   },
   {
    "date": "2026-06-30",
@@ -2808,6 +2843,45 @@
    "source_name": "Texas DMV registry via Robotaxi Tracker weekly newsletter (6 Nov 2026; +164 in week, Model Y 671 + Cybercab 573)",
    "source_url": "https://weekly.robotaxitracker.com/p/waymo-breaks-up-with-uber-as-tesla",
    "notes": "Registered, not necessarily in service; statewide Texas. Waymo Texas registrations 1,285 same week (not tracked)."
+  },
+  {
+   "date": "2026-11-16",
+   "operator": "Tesla",
+   "market": "Texas",
+   "metric": "fleet_size_registrations",
+   "value": 1306.0,
+   "unit": "vehicles",
+   "source_type": "regulator",
+   "confidence": "reported",
+   "source_name": "Texas DMV automated vehicle authorizations (via GoodCarBadCar / The Robotaxi Report)",
+   "source_url": "https://www.goodcarbadcar.net/texas-robotaxi-authorizations-tesla-waymo-november-2026/",
+   "notes": "Authorized to run driverless, not necessarily in service; statewide Texas."
+  },
+  {
+   "date": "2026-10-29",
+   "operator": "Waymo",
+   "market": "Texas",
+   "metric": "fleet_size_registrations",
+   "value": 1259.0,
+   "unit": "vehicles",
+   "source_type": "regulator",
+   "confidence": "reported",
+   "source_name": "Texas DMV automated vehicle authorizations (via GoodCarBadCar)",
+   "source_url": "https://www.goodcarbadcar.net/texas-robotaxi-authorizations-tesla-waymo-november-2026/",
+   "notes": "Authorized to run driverless, not necessarily in service; statewide Texas."
+  },
+  {
+   "date": "2026-11-16",
+   "operator": "Waymo",
+   "market": "Texas",
+   "metric": "fleet_size_registrations",
+   "value": 1321.0,
+   "unit": "vehicles",
+   "source_type": "regulator",
+   "confidence": "reported",
+   "source_name": "Texas DMV automated vehicle authorizations (via GoodCarBadCar / The Robotaxi Report)",
+   "source_url": "https://www.goodcarbadcar.net/texas-robotaxi-authorizations-tesla-waymo-november-2026/",
+   "notes": "Authorized to run driverless, not necessarily in service; statewide Texas."
   },
   {
    "date": "2025-11-25",
