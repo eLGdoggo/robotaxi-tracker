@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-11-18",
+ "generated_at": "2026-11-25",
  "chart_config": [
   {
    "metric": "accidents_per_million_driverless_miles",
@@ -343,6 +343,7 @@
    "metric": "markets_count",
    "group": "compare",
    "series": [
+    "Baidu Apollo Go",
     "Tesla",
     "Waymo"
    ],
@@ -500,8 +501,10 @@
   {
    "metric": "robotaxi_revenue_usd",
    "group": "compare",
-   "series": [],
-   "max_points_per_series": 1,
+   "series": [
+    "Pony.ai"
+   ],
+   "max_points_per_series": 2,
    "publish": false
   }
  ],
@@ -2520,6 +2523,19 @@
    "notes": "Approximate where source says ~ or more than."
   },
   {
+   "date": "2026-09-30",
+   "operator": "Pony.ai",
+   "market": "all",
+   "metric": "fleet_size",
+   "value": 2768.0,
+   "unit": "vehicles",
+   "source_type": "company",
+   "confidence": "company-stated",
+   "source_name": "Pony.ai Q3 2026 results",
+   "source_url": "https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-reports-third-quarter-2026-financial-results-total",
+   "notes": "Robotaxi fleet as of 30 Sep 2026; FY target 3,500."
+  },
+  {
    "date": "2026-10-15",
    "operator": "Tesla",
    "market": "Austin",
@@ -4104,6 +4120,19 @@
    "source_name": "Baidu Q2 2026 6-K",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1329099/000119312526355431/d112854dex991.htm",
    "notes": "\"Global footprint\" incl. testing/pilots - not all public driverless paid. Not comparable with US counts."
+  },
+  {
+   "date": "2026-10-31",
+   "operator": "Baidu Apollo Go",
+   "market": "all",
+   "metric": "markets_count",
+   "value": 30.0,
+   "unit": "cities",
+   "source_type": "company",
+   "confidence": "company-stated",
+   "source_name": "Baidu Q3 2026 results via Driverless.news",
+   "source_url": "https://www.driverless.news/article/baidu-apollo-go-30-cities-q3-2026",
+   "notes": "\"Global footprint\" incl. testing/pilots (as of Oct 2026) - not comparable with US counts."
   },
   {
    "date": "2025-06-22",
@@ -5853,6 +5882,19 @@
    "confidence": "company-stated",
    "source_name": "Pony.ai Q2 2026 6-K",
    "source_url": "https://www.sec.gov/Archives/edgar/data/1969302/000110465926098113/tm2623382d1_ex99-1.htm"
+  },
+  {
+   "date": "2026-09-30",
+   "operator": "Pony.ai",
+   "market": "all",
+   "metric": "robotaxi_revenue_usd",
+   "value": 17800000.0,
+   "unit": "USD/quarter",
+   "source_type": "company",
+   "confidence": "company-stated",
+   "source_name": "Pony.ai Q3 2026 results",
+   "source_url": "https://ir.pony.ai/news-releases/news-release-details/pony-ai-inc-reports-third-quarter-2026-financial-results-total",
+   "notes": "US$17.8M (RMB119.1M) as stated by company; no conversion applied."
   }
  ],
  "markets": [
